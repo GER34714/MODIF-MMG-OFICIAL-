@@ -1,4 +1,4 @@
-// Partículas fondo
+// Fondo de partículas
 particlesJS('particles-js', {
   particles:{
     number:{value:70},
@@ -10,31 +10,48 @@ particlesJS('particles-js', {
   }
 });
 
-// Cargar artistas
+// ===================== ARTISTAS =====================
 fetch("artistas.json")
-.then(res => res.json())
-.then(artistas => {
-  const grid = document.getElementById("artistas-grid");
-  artistas.forEach(a=>{
+.then(r => r.json())
+.then(lista => {
+
+  // Catálogo de artistas
+  const gridArtistas = document.getElementById("artistas-grid");
+
+  // Galería de artistas
+  const galeriaArtistas = document.getElementById("galeria-artistas");
+
+  lista.forEach(a => {
+
+    // Card catálogo
     const card = document.createElement("div");
     card.className = "card-artista";
     card.innerHTML = `
-      <img src="${a.img || ''}">
+      <img src="${a.img}">
       <h3>${a.nombre}</h3>
       <p>${a.descripcion}</p>
     `;
-    grid.appendChild(card);
+    gridArtistas.appendChild(card);
+
+    // Foto para galería de artistas
+    if (a.img && a.img.length > 5) {
+      const foto = document.createElement("img");
+      foto.src = a.img;
+      galeriaArtistas.appendChild(foto);
+    }
   });
+
 });
 
-// Cargar galería de fotos
+// ===================== GALERÍA EXTRA =====================
 fetch("galeria.json")
-.then(res => res.json())
+.then(r => r.json())
 .then(fotos => {
-  const grid = document.getElementById("galeria-grid");
-  fotos.forEach(img=>{
-    const foto = document.createElement("img");
-    foto.src = img;
-    grid.appendChild(foto);
+  const galeriaExtras = document.getElementById("galeria-extras");
+
+  fotos.forEach(link => {
+    const img = document.createElement("img");
+    img.src = link;
+    galeriaExtras.appendChild(img);
   });
 });
