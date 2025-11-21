@@ -1,4 +1,4 @@
-// Fondo partículas
+// Partículas
 particlesJS('particles-js', {
   particles:{
     number:{value:70},
@@ -10,25 +10,21 @@ particlesJS('particles-js', {
   }
 });
 
-// ===================== CONTRATAR =====================
+// CONTRATAR
 function contratar(nombre){
   const numero = "5491157343551";
   const mensaje = encodeURIComponent(`Hola 👋, quiero contratar a ${nombre} (MMG | Representante de Artistas).`);
   window.open(`https://wa.me/${numero}?text=${mensaje}`, "_blank");
 }
 
-// ===================== ARTISTAS (CARRUSEL) =====================
+// ARTISTAS
 fetch("artistas.json")
 .then(r => r.json())
 .then(lista => {
-
   const container = document.getElementById("artistas-container");
 
   lista.forEach(a => {
-
-    const foto = (a.img && a.img.length > 5)
-      ? a.img
-      : "https://iili.io/KtXqRHJ.md.png";
+    const foto = a.img && a.img.length > 5 ? a.img : "https://iili.io/KtXqRHJ.md.png";
 
     const slide = document.createElement("div");
     slide.className = "swiper-slide";
@@ -38,10 +34,7 @@ fetch("artistas.json")
         <img src="${foto}">
         <h3>${a.nombre}</h3>
         <p>${a.descripcion}</p>
-
-        <button class="btn-contratar" onclick="contratar('${a.nombre}')">
-          🎤 Contratar Artista
-        </button>
+        <button class="btn-contratar" onclick="contratar('${a.nombre}')">🎤 Contratar Artista</button>
       </div>
     `;
 
@@ -63,35 +56,41 @@ fetch("artistas.json")
       1024: { slidesPerView: 3 }
     }
   });
-
 });
 
-// ===================== GALERÍA EXTRA =====================
+// GALERÍA
 fetch("galeria.json")
 .then(r => r.json())
 .then(fotos => {
 
-  const galeriaExtras = document.getElementById("galeria-extras");
-  const btn = document.getElementById("btn-ver-mas");
+  const galeria = document.getElementById("galeria-extras");
+  const btnMas = document.getElementById("btn-ver-mas");
+  const btnMenos = document.getElementById("btn-ver-menos");
 
   let cantidad = 20;
 
   function render(){
-    galeriaExtras.innerHTML = "";
+    galeria.innerHTML = "";
+
     fotos.slice(0, cantidad).forEach(link => {
       const img = document.createElement("img");
       img.src = link;
-      galeriaExtras.appendChild(img);
+      galeria.appendChild(img);
     });
 
-    if(cantidad >= fotos.length){
-      btn.style.display = "none";
-    }
+    btnMenos.style.display = cantidad > 20 ? "block" : "none";
+    btnMas.style.display = cantidad >= fotos.length ? "none" : "block";
   }
 
-  btn.addEventListener("click", () => {
+  btnMas.addEventListener("click", () => {
     cantidad += 20;
     render();
+  });
+
+  btnMenos.addEventListener("click", () => {
+    cantidad = 20;
+    render();
+    window.location.hash = "#galeria";
   });
 
   render();
