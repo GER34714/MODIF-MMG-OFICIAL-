@@ -1,8 +1,4 @@
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-}
+*{margin:0;padding:0;box-sizing:border-box;}
 
 body{
   font-family:'Poppins',sans-serif;
@@ -10,197 +6,98 @@ body{
   color:#fff;
 }
 
-/* Fondo partículas */
-#particles-js{
-  position:fixed;
-  top:0;left:0;
-  width:100%;height:100%;
-  z-index:-1;
-}
-
 /* HERO */
 .hero{text-align:center;padding:60px 20px;}
 .logo{width:180px;filter:drop-shadow(0 0 30px #b97cff);}
-.hero h1{margin-top:15px;text-shadow:0 0 20px #b97cff,0 0 40px #d4af37;}
+.hero h1{
+  margin-top:15px;text-shadow:0 0 20px #b97cff,0 0 40px #d4af37;
+}
 
 .menu{
-  margin-top:25px;
-  display:flex;
-  gap:15px;
-  justify-content:center;
-  flex-wrap:wrap;
+  margin-top:25px;display:flex;gap:15px;
+  justify-content:center;flex-wrap:wrap;
 }
 .menu a{
-  text-decoration:none;
-  color:#fff;
-  padding:6px 12px;
-  background:rgba(0,0,0,0.4);
-  border-radius:12px;
-  transition:.3s;
+  text-decoration:none;color:#fff;padding:6px 12px;
+  background:rgba(0,0,0,0.4);border-radius:12px;transition:.3s;
 }
 .menu a:hover{
-  background:#b97cff;
-  box-shadow:0 0 20px #d4af37;
+  background:#b97cff;box-shadow:0 0 20px #d4af37;
 }
 
 .section{text-align:center;padding:60px 20px;}
 .titulo-seccion{
-  font-size:1.8rem;
-  margin-bottom:25px;
+  font-size:1.8rem;margin-bottom:25px;
   text-shadow:0 0 15px #b97cff,0 0 25px #d4af37;
 }
 
-/* ====================== ARTISTAS CARD ====================== */
-
-.card-artista{
-  background:rgba(0,0,0,0.55);
-  padding:18px;
-  border-radius:18px;
-  box-shadow:0 0 20px rgba(185,124,255,0.4);
-  transition:.3s;
-  text-align:center;
+/* ARTISTAS */
+.grid-artistas{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+  gap:25px;
 }
-
+.card-artista{
+  background:rgba(0,0,0,0.6);padding:15px;border-radius:15px;
+  box-shadow:0 0 20px rgba(185,124,255,0.4);transition:.3s;
+}
 .card-artista:hover{
   transform:scale(1.05);
-  box-shadow:0 0 35px rgba(212,175,55,0.7);
+  box-shadow:0 0 40px rgba(185,124,255,0.7);
 }
-
-/* FOTO COMPLETA SIN ZOOM */
 .card-artista img{
-  width:100%;
-  height:230px;
-  object-fit:contain;      /* ← SIN ZOOM */
-  object-position:center;  /* ← CENTRADA */
-  background:#000;         /* ← FUNDO LIMPIO DETRÁS */
-  border-radius:12px;
-  margin-bottom:20px;
-  box-shadow:0 0 15px rgba(185,124,255,0.3);
+  width:100%;height:260px;object-fit:cover;
+  border-radius:12px;margin-bottom:12px;
 }
 
-/* Nombre */
-.card-artista h3{
-  margin-bottom:12px;
-  font-size:1.2rem;
-  text-shadow:0 0 10px #b97cff;
-}
-
-/* Descripción */
-.card-artista p{
-  font-size:0.95rem;
-  line-height:1.45em;
-  margin-bottom:25px;
-  color:#eee;
-}
-
-/* BOTÓN CONTRATAR */
 .btn-contratar{
-  background:linear-gradient(90deg,#d4af37,#ffcc70,#d4af37);
-  background-size:300% 300%;
-  color:#000;
-  border:none;
-  padding:10px 20px;
-  border-radius:30px;
-  font-weight:700;
-  cursor:pointer;
-  margin:auto;
-  display:block;
-  text-align:center;
-  box-shadow:0 0 25px rgba(212,175,55,0.7);
-  animation:glowBtn 3s infinite alternate;
+  margin-top:10px;display:inline-block;padding:8px 14px;
+  background:#b97cff;border-radius:10px;color:#fff;
+  text-decoration:none;font-weight:bold;transition:.3s;
 }
 .btn-contratar:hover{
-  transform:scale(1.07);
-  background-position:right center;
+  background:#d4af37;
 }
 
-@keyframes glowBtn{
-  0%{box-shadow:0 0 20px #b97cff;}
-  100%{box-shadow:0 0 35px #ffcc70;}
-}
-
-/* ================= GALERÍA ================= */
-
-.subtitulo-galeria{
-  font-size:1.4rem;
-  margin:30px 0 15px;
-  text-shadow:0 0 10px #b97cff,0 0 15px #d4af37;
+/* GALERÍA */
+.subtexto-galeria{
+  font-size:1.1rem;margin-bottom:20px;opacity:.9;
 }
 
 .grid-galeria{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-  gap:15px;
+  gap:15px;margin-bottom:60px;
 }
 
 .grid-galeria img{
-  width:100%;
-  border-radius:12px;
-  box-shadow:0 0 20px rgba(185,124,255,0.4);
-  transition:.3s;
+  width:100%;border-radius:12px;object-fit:cover;height:220px;
+  box-shadow:0 0 18px rgba(185,124,255,.35);transition:.3s;
 }
-
 .grid-galeria img:hover{
-  transform:scale(1.08);
-  box-shadow:0 0 40px rgba(212,175,55,0.8);
+  transform:scale(1.07);
+  box-shadow:0 0 35px rgba(212,175,55,.8);
 }
 
-/* ================= OTROS ================= */
-
+/* VIDEOS */
 .youtube{
-  width:100%;
-  height:350px;
-  border-radius:15px;
+  width:100%;height:350px;border-radius:15px;
   box-shadow:0 0 20px rgba(185,124,255,0.6);
-}
-
-.servicios-grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-  gap:20px;
-}
-
-.serv-box{
-  background:rgba(0,0,0,0.5);
-  padding:20px;
-  border-radius:15px;
-  box-shadow:0 0 15px #b97cff;
-}
-
-.sponsors-box,
-.agenda-box,
-.insta-box{
-  background:rgba(0,0,0,0.5);
-  padding:25px;
-  border-radius:15px;
-  width:90%;
-  margin:auto;
-  box-shadow:0 0 20px rgba(185,124,255,0.5);
 }
 
 /* FOOTER */
 footer{
-  margin-top:60px;
-  text-align:center;
-  padding:30px;
-  background:rgba(0,0,0,0.7);
+  margin-top:60px;text-align:center;
+  padding:30px;background:rgba(0,0,0,0.7);
 }
 .firma-ciborg{
-  color:#00ffff;
-  text-shadow:0 0 10px #00ffff;
+  color:#00ffff;text-shadow:0 0 10px #00ffff;
 }
 
 /* WHATSAPP */
 .whatsapp{
-  position:fixed;
-  bottom:25px;
-  right:25px;
-  width:65px;height:65px;
-  border-radius:50%;
-  background:#25D366;
-  display:flex;
-  justify-content:center;
-  align-items:center;
+  position:fixed;bottom:25px;right:25px;
+  width:65px;height:65px;border-radius:50%;
+  background:#25D366;display:flex;justify-content:center;align-items:center;
   box-shadow:0 0 20px rgba(0,0,0,0.6);
 }
 .whatsapp img{width:40px;height:40px;}
