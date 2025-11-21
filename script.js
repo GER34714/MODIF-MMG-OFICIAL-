@@ -66,15 +66,33 @@ fetch("artistas.json")
 
 });
 
-// ===================== GALERÍA EXTRA (SOLO FOTOS) =====================
+// ===================== GALERÍA EXTRA =====================
 fetch("galeria.json")
 .then(r => r.json())
 .then(fotos => {
-  const galeriaExtras = document.getElementById("galeria-extras");
 
-  fotos.forEach(link => {
-    const img = document.createElement("img");
-    img.src = link;
-    galeriaExtras.appendChild(img);
+  const galeriaExtras = document.getElementById("galeria-extras");
+  const btn = document.getElementById("btn-ver-mas");
+
+  let cantidad = 20;
+
+  function render(){
+    galeriaExtras.innerHTML = "";
+    fotos.slice(0, cantidad).forEach(link => {
+      const img = document.createElement("img");
+      img.src = link;
+      galeriaExtras.appendChild(img);
+    });
+
+    if(cantidad >= fotos.length){
+      btn.style.display = "none";
+    }
+  }
+
+  btn.addEventListener("click", () => {
+    cantidad += 20;
+    render();
   });
+
+  render();
 });
