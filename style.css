@@ -66,12 +66,13 @@ body{
   box-shadow:0 0 35px rgba(212,175,55,0.7);
 }
 
-/* FOTO CENTRADA */
+/* FOTO COMPLETA SIN ZOOM */
 .card-artista img{
   width:100%;
   height:230px;
-  object-fit:cover;
-  object-position:center;
+  object-fit:contain;      /* ← SIN ZOOM */
+  object-position:center;  /* ← CENTRADA */
+  background:#000;         /* ← FUNDO LIMPIO DETRÁS */
   border-radius:12px;
   margin-bottom:20px;
   box-shadow:0 0 15px rgba(185,124,255,0.3);
