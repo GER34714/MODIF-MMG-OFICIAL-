@@ -1,111 +1,140 @@
-*{margin:0;padding:0;box-sizing:border-box;}
-body{
-  font-family:'Poppins',sans-serif;
-  background:url("https://iili.io/KbTijol.jpg") center/cover fixed;
-  color:#fff;
-}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-/* Partículas */
-#particles-js{
-  position:fixed;top:0;left:0;width:100%;height:100%;z-index:-1;
-}
+  <title>MMG™ Oficial | Representante de Artistas</title>
 
-/* HERO */
-.hero{text-align:center;padding:60px 20px;}
-.logo{width:180px;filter:drop-shadow(0 0 30px #b97cff);}
-.hero h1{margin-top:15px;text-shadow:0 0 20px #b97cff,0 0 40px #d4af37;}
-.menu{
-  margin-top:25px;display:flex;gap:15px;justify-content:center;flex-wrap:wrap;
-}
-.menu a{
-  text-decoration:none;color:#fff;padding:6px 12px;
-  background:rgba(0,0,0,0.4);border-radius:12px;transition:.3s;
-}
-.menu a:hover{
-  background:#b97cff;box-shadow:0 0 20px #d4af37;
-}
+  <link rel="icon" type="image/png" href="https://iili.io/KtXqRHJ.md.png">
+  <meta name="theme-color" content="#b97cff">
 
-.section{text-align:center;padding:60px 20px;}
-.titulo-seccion{
-  font-size:1.8rem;margin-bottom:25px;
-  text-shadow:0 0 15px #b97cff,0 0 25px #d4af37;
-}
+  <link rel="stylesheet" href="style.css">
+</head>
 
-/* ARTISTAS */
-.grid-artistas{
-  display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:25px;
-}
-.card-artista{
-  background:rgba(0,0,0,0.6);padding:15px;border-radius:15px;
-  box-shadow:0 0 20px rgba(185,124,255,0.4);transition:.3s;
-}
-.card-artista:hover{
-  transform:scale(1.05);box-shadow:0 0 40px rgba(185,124,255,0.7);
-}
-.card-artista img{
-  width:100%;height:240px;object-fit:cover;border-radius:12px;margin-bottom:10px;
-}
+<body>
 
-/* GALERÍA */
-.subtitulo-galeria{
-  font-size:1.4rem;margin:30px 0 15px;
-  text-shadow:0 0 10px #b97cff,0 0 15px #d4af37;
-}
-.grid-galeria{
-  display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:15px;
-}
-.grid-galeria img{
-  width:100%;border-radius:12px;
-  box-shadow:0 0 20px rgba(185,124,255,0.4);
-  transition:.3s;
-}
-.grid-galeria img:hover{
-  transform:scale(1.08);
-  box-shadow:0 0 40px rgba(212,175,55,0.8);
-}
+<div id="particles-js"></div>
 
-/* VIDEOS */
-.youtube{
-  width:100%;height:350px;border-radius:15px;
-  box-shadow:0 0 20px rgba(185,124,255,0.6);
-}
+<!-- ================= HERO ================= -->
+<header class="hero">
+  <img src="https://iili.io/KtXqRHJ.md.png" class="logo" alt="MMG Logo">
+  <h1>MMG™ | Representación Oficial de la Movida Tropical</h1>
+  <p class="sub">Shows – Contrataciones – Difusión – Booking Oficial</p>
 
-/* SERVICIOS */
-.servicios-grid{
-  display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px;
-}
-.serv-box{
-  background:rgba(0,0,0,0.5);padding:20px;border-radius:15px;
-  box-shadow:0 0 15px #b97cff;
-}
+  <nav class="menu">
+    <a href="#artistas">Artistas</a>
+    <a href="#galeria">Fotos</a>
+    <a href="#videos">Videos</a>
+    <a href="#instagram">Instagram</a>
+    <a href="#servicios">Servicios</a>
+    <a href="#sponsors">Sponsors</a>
+    <a href="#testimonios">Testimonios</a>
+    <a href="#agenda">Agenda</a>
+  </nav>
+</header>
 
-/* SPONSORS */
-.sponsors-box,.agenda-box,.insta-box{
-  background:rgba(0,0,0,0.5);
-  padding:25px;border-radius:15px;width:90%;margin:auto;
-  box-shadow:0 0 20px rgba(185,124,255,0.5);
-}
+<!-- ================= ARTISTAS ================= -->
+<section id="artistas" class="section">
+  <h2 class="titulo-seccion">🎤 Catálogo de Artistas</h2>
+  <div id="artistas-grid" class="grid-artistas"></div>
+</section>
 
-/* TESTIMONIOS */
-.test-grid{
-  display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px;
-}
-.test-box{
-  background:rgba(0,0,0,0.5);padding:20px;border-radius:12px;
-  box-shadow:0 0 20px rgba(185,124,255,0.5);
-}
+<!-- ================= GALERÍA ================= -->
+<section id="galeria" class="section">
+  
+  <h2 class="titulo-seccion">📸 Galería MMG</h2>
 
-/* FOOTER */
-footer{
-  margin-top:60px;text-align:center;padding:30px;background:rgba(0,0,0,0.7);
-}
-.firma-ciborg{color:#00ffff;text-shadow:0 0 10px #00ffff;}
+  <!-- Sub: Galería Artistas -->
+  <h3 class="subtitulo-galeria">📸 Fotos de los Artistas</h3>
+  <div id="galeria-artistas" class="grid-galeria"></div>
 
-/* WHATSAPP */
-.whatsapp{
-  position:fixed;bottom:25px;right:25px;
-  width:65px;height:65px;border-radius:50%;
-  background:#25D366;display:flex;justify-content:center;align-items:center;
-  box-shadow:0 0 20px rgba(0,0,0,0.6);
-}
-.whatsapp img{width:40px;height:40px;}
+  <!-- Sub: Galería Extras -->
+  <h3 class="subtitulo-galeria">🎤 Fotos de Shows / Backstage / Eventos</h3>
+  <div id="galeria-extras" class="grid-galeria"></div>
+
+</section>
+
+<!-- ================= VIDEOS ================= -->
+<section id="videos" class="section">
+  <h2 class="titulo-seccion">🎬 Videos Oficiales / YouTube</h2>
+
+  <iframe class="youtube"
+    src="https://www.youtube.com/embed?listType=user_uploads&list=managermusicgrup1"
+    frameborder="0" allowfullscreen></iframe>
+</section>
+
+<!-- ================= INSTAGRAM ================= -->
+<section id="instagram" class="section">
+  <h2 class="titulo-seccion">📲 Instagram Oficial</h2>
+
+  <div class="insta-box">
+    <a href="https://www.instagram.com/managermusicgrup1?igsh=MWc2NmFxbDBqZnk1MQ==" target="_blank">
+      👉 Ver Instagram @managermusicgrup1
+    </a>
+  </div>
+</section>
+
+<!-- ================= SERVICIOS ================= -->
+<section id="servicios" class="section">
+  <h2 class="titulo-seccion">🚀 Servicios MMG</h2>
+
+  <div class="servicios-grid">
+    <div class="serv-box">Representación Artística</div>
+    <div class="serv-box">Booking y Contrataciones</div>
+    <div class="serv-box">Producción y Manejo de Shows</div>
+    <div class="serv-box">Difusión en Redes Sociales</div>
+    <div class="serv-box">Asesoría Musical</div>
+    <div class="serv-box">Marketing de Artistas</div>
+  </div>
+</section>
+
+<!-- ================= SPONSORS ================= -->
+<section id="sponsors" class="section">
+  <h2 class="titulo-seccion">🤝 Sponsors & Partners</h2>
+
+  <div class="sponsors-box">
+    <p>Próximamente…</p>
+  </div>
+</section>
+
+<!-- ================= TESTIMONIOS ================= -->
+<section id="testimonios" class="section">
+  <h2 class="titulo-seccion">⭐ Testimonios y Reseñas</h2>
+
+  <div class="test-grid">
+    <div class="test-box">"Profesionales, responsables y con mucha trayectoria." – Cliente</div>
+    <div class="test-box">"Los mejores shows asegurados." – Productor</div>
+    <div class="test-box">"Un equipo increíble detrás de cada artista." – Manager</div>
+  </div>
+</section>
+
+<!-- ================= AGENDA ================= -->
+<section id="agenda" class="section">
+  <h2 class="titulo-seccion">📅 Agenda de Eventos</h2>
+
+  <div class="agenda-box">
+    <p>Actualizando fechas…</p>
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer>
+  <p>© 2025 MMG Manager Music Group™ · Página Oficial</p>
+  <p>Creado y Diseñado por 
+    <a href="https://ciborg347.onrender.com" target="_blank" class="firma-ciborg">Ciborg 347™</a>
+  </p>
+</footer>
+
+<!-- BOTÓN WHATSAPP -->
+<a href="https://wa.me/5491157343551?text=Hola!%20Quiero%20información%20sobre%20los%20artistas%20de%20MMG"
+ class="whatsapp" target="_blank">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg">
+</a>
+
+<!-- SCRIPTS -->
+<script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+<script src="script.js"></script>
+
+</body>
+</html>
