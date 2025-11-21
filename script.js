@@ -1,73 +1,143 @@
-// Fondo partículas
-particlesJS('particles-js', {
-  particles:{
-    number:{value:70},
-    color:{value:["#d4af37","#b97cff"]},
-    opacity:{value:0.5,random:true},
-    size:{value:3,random:true},
-    move:{enable:true,speed:1.4},
-    line_linked:{enable:false}
-  }
-});
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-// ===================== ARTISTAS (CARRUSEL) =====================
-fetch("artistas.json")
-.then(r => r.json())
-.then(lista => {
+  <title>MMG™ Oficial | Representante de Artistas</title>
 
-  const container = document.getElementById("artistas-container");
+  <link rel="icon" type="image/png" href="https://iili.io/KtXqRHJ.md.png">
+  <meta name="theme-color" content="#b97cff">
 
-  lista.forEach(a => {
+  <link rel="stylesheet" href="style.css">
 
-    // Si no tiene imagen → usar logo MMG
-    const foto = (a.img && a.img.length > 5)
-      ? a.img
-      : "https://iili.io/KtXqRHJ.md.png";
+  <!-- SWIPER -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+</head>
 
-    const slide = document.createElement("div");
-    slide.className = "swiper-slide";
+<body>
 
-    slide.innerHTML = `
-      <div class="card-artista">
-        <img src="${foto}">
-        <h3>${a.nombre}</h3>
-        <p>${a.descripcion}</p>
-      </div>
-    `;
+<div id="particles-js"></div>
 
-    container.appendChild(slide);
-  });
+<!-- ================= HERO ================= -->
+<header class="hero">
+  <img src="https://iili.io/KtXqRHJ.md.png" class="logo" alt="MMG Logo">
+  <h1>MMG™ | Representación Oficial de la Movida Tropical</h1>
+  <p class="sub">Shows – Contrataciones – Difusión – Booking Oficial</p>
 
-  // Inicializar Swiper
-  new Swiper('.artistas-swiper', {
-    slidesPerView: 3,
-    spaceBetween: 30,
-    loop: true,
-    autoplay: { delay: 4000 },
-    navigation: {
-      nextEl: '.swiper-button-next',
-      prevEl: '.swiper-button-prev'
-    },
-    breakpoints: {
-      320: { slidesPerView: 1 },
-      768: { slidesPerView: 2 },
-      1024: { slidesPerView: 3 }
-    }
-  });
+  <nav class="menu">
+    <a href="#artistas">Artistas</a>
+    <a href="#galeria">Fotos</a>
+    <a href="#videos">Videos</a>
+    <a href="#instagram">Instagram</a>
+    <a href="#servicios">Servicios</a>
+    <a href="#sponsors">Sponsors</a>
+    <a href="#testimonios">Testimonios</a>
+    <a href="#agenda">Agenda</a>
+  </nav>
+</header>
 
-});
+<!-- ================= ARTISTAS (CARRUSEL) ================= -->
+<section id="artistas" class="section">
+  <h2 class="titulo-seccion">🎤 Catálogo de Artistas</h2>
 
-// ===================== GALERÍA EXTRA (SOLO FOTOS) =====================
-fetch("galeria.json")
-.then(r => r.json())
-.then(fotos => {
+  <div class="swiper artistas-swiper">
+    <div class="swiper-wrapper" id="artistas-container"></div>
 
-  const galeriaExtras = document.getElementById("galeria-extras");
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-button-next"></div>
+  </div>
+</section>
 
-  fotos.forEach(link => {
-    const img = document.createElement("img");
-    img.src = link;
-    galeriaExtras.appendChild(img);
-  });
+<!-- ================= GALERÍA ================= -->
+<section id="galeria" class="section">
+  <h2 class="titulo-seccion">📸 Galería MMG</h2>
 
-});
+  <h3 class="subtitulo-galeria">🎤 Fotos de Shows / Backstage / Eventos</h3>
+  <div id="galeria-extras" class="grid-galeria"></div>
+</section>
+
+<!-- ================= VIDEOS ================= -->
+<section id="videos" class="section">
+  <h2 class="titulo-seccion">🎬 Videos Oficiales / YouTube</h2>
+
+  <iframe class="youtube"
+    src="https://www.youtube.com/embed?listType=user_uploads&list=managermusicgrup1"
+    frameborder="0" allowfullscreen></iframe>
+</section>
+
+<!-- ================= INSTAGRAM ================= -->
+<section id="instagram" class="section">
+  <h2 class="titulo-seccion">📲 Instagram Oficial</h2>
+
+  <div class="insta-box">
+    <a href="https://www.instagram.com/managermusicgrup1" target="_blank">
+      👉 Ver Instagram @managermusicgrup1
+    </a>
+  </div>
+</section>
+
+<!-- ================= SERVICIOS ================= -->
+<section id="servicios" class="section">
+  <h2 class="titulo-seccion">🚀 Servicios MMG</h2>
+
+  <div class="servicios-grid">
+    <div class="serv-box">Representación Artística</div>
+    <div class="serv-box">Booking y Contrataciones</div>
+    <div class="serv-box">Producción y Manejo de Shows</div>
+    <div class="serv-box">Difusión en Redes Sociales</div>
+    <div class="serv-box">Asesoría Musical</div>
+    <div class="serv-box">Marketing de Artistas</div>
+  </div>
+</section>
+
+<!-- ================= SPONSORS ================= -->
+<section id="sponsors" class="section">
+  <h2 class="titulo-seccion">🤝 Sponsors & Partners</h2>
+
+  <div class="sponsors-box">
+    <p>Próximamente…</p>
+  </div>
+</section>
+
+<!-- ================= TESTIMONIOS ================= -->
+<section id="testimonios" class="section">
+  <h2 class="titulo-seccion">⭐ Testimonios y Reseñas</h2>
+
+  <div class="test-grid">
+    <div class="test-box">"Profesionales, responsables y con mucha trayectoria." – Cliente</div>
+    <div class="test-box">"Los mejores shows asegurados." – Productor</div>
+    <div class="test-box">"Un equipo increíble detrás de cada artista." – Manager</div>
+  </div>
+</section>
+
+<!-- ================= AGENDA ================= -->
+<section id="agenda" class="section">
+  <h2 class="titulo-seccion">📅 Agenda de Eventos</h2>
+
+  <div class="agenda-box">
+    <p>Actualizando fechas…</p>
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer>
+  <p>© 2025 MMG Manager Music Group™ · Página Oficial</p>
+  <p>Creado y Diseñado por 
+    <a href="https://ciborg347.onrender.com" target="_blank" class="firma-ciborg">Ciborg 347™</a>
+  </p>
+</footer>
+
+<!-- BOTÓN WHATSAPP -->
+<a href="https://wa.me/5491157343551?text=Hola!%20Quiero%20información%20sobre%20los%20artistas%20de%20MMG"
+ class="whatsapp" target="_blank">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg">
+</a>
+
+<!-- JS -->
+<script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script src="script.js"></script>
+
+</body>
+</html>
