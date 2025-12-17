@@ -1,4 +1,4 @@
-// script.js (COMPLETO, respetando tu código + botón cerrar)
+// script.js
 
 // Partículas
 particlesJS('particles-js', {
