@@ -1,35 +1,132 @@
+particlesJS('particles-js', {
+  particles:{
+    number:{value:70},
+    color:{value:["#d4af37","#b97cff"]},
+    opacity:{value:0.5,random:true},
+    size:{value:3,random:true},
+    move:{enable:true,speed:1.4},
+    line_linked:{enable:false}
+  }
+});
 
-[
-  {"nombre":"Damy Levante","img":"https://iili.io/KbDmv8N.md.jpg","descripcion":"Artista joven con estilo moderno. Ideal para eventos actuales y festivales."},
-  {"nombre":"Delro","img":"https://iili.io/Ky22JEu.md.jpg","descripcion":"La música de DELRO fusiona reguetón moderno y pop urbano, con ritmos frescos, letras románticas y una vibra auténtica y juvenil. 🎶🔥"},
-  {"nombre":"Los Creadores","img":"","descripcion":"Innovación y ritmo. Propuesta moderna dentro de la movida tropical."},
-  {"nombre":"Darío el Ángel del Amor","img":"","descripcion":"Voz potente y carisma escénico. Cumbia romántica que emociona."},
-  {"nombre":"Axel FLP","img":"","descripcion":"Cumbia moderna con flow y actitud. Sonido de calle con estilo profesional."},
-  {"nombre":"Kevin Quiroz","img":"","descripcion":"Talento joven de la cumbia argentina. Energía y conexión con el público."},
-  {"nombre":"Franco Flow 999","img":"","descripcion":"Nuevo sonido tropical urbano. Energía, estilo y ritmo actual."},
-  {"nombre":"Tomy LP","img":"","descripcion":"Artista revelación. Cumbia joven, moderna y con mucha proyección."},
+function contratar(nombre){
+  const numero = "5491157343551";
+  const mensaje = encodeURIComponent(`Hola 👋, quiero contratar a ${nombre} (MMG | Representante de Artistas).`);
+  window.open(`https://wa.me/${numero}?text=${mensaje}`, "_blank");
+}
 
-  {"nombre":"Banda Vamos","img":"https://iili.io/Kbx4d0J.md.jpg","descripcion":"Banda Vamos Cuarteto: Desde Catamarca, un grupo con pasión por el cuarteto popular. Combinan clásicos del género con temas propios para hacer bailar a todos."},
-  {"nombre":"Re Piola","img":"https://iili.io/Kbx6jaf.md.jpg","descripcion":"Re Piola es una banda de cumbia base, formada en la década del 2000 y liderada por 'Tito' Lacuadra. Es conocida por su estilo de cumbia villera y sus letras que reflejan historias y vivencias de barrio."},
-  {"nombre":"Andy el Cumbiero","img":"https://iili.io/KbxPXoP.md.jpg","descripcion":"Es una banda y orquesta argentina liderada por Andy Olivieri, que se especializa en animar eventos privados y fiestas, especialmente conocida por ser la preferida de muchos futbolistas."},
-  {"nombre":"Flor de Piedra","img":"https://iili.io/KbxmMOu.md.jpg","descripcion":"Pioneros de la cumbia villera, su música marcó un antes y un después en el género. Con un estilo distintivo, su repertorio se convirtió en himnos para muchos. Contratar esta banda es traer un pedazo de historia musical a tu evento."},
-  {"nombre":"Maxi y La Champion Liga","img":"https://iili.io/Kbxpb3B.md.jpg","descripcion":"Shows con fuerza y presencia. Una fusión perfecta entre pasión y ritmo."},
-  {"nombre":"Grupo Gatillo","img":"https://iili.io/KbzdrzX.md.jpg","descripcion":"Norberto Aguirre & Grupo Gatillo: Ritmo, carisma y pura fiesta. Cumbia con historia y energía actual que hace bailar a todos. ¡Un show inolvidable para tu evento!"},
-  {"nombre":"El Avance","img":"https://iili.io/KyHtBVV.md.jpg","descripcion":"El Avanze – La Nueva Generación: Juventud, estilo y energía renovada. La nueva cara de la cumbia popular argentina, con ritmos frescos y conexión directa con el público."},
-  {"nombre":"El Viejo Marquez","img":"https://iili.io/KbDsEzv.md.jpg","descripcion":"Tradición y trayectoria. Cumbia con estilo y profesionalismo."},
-  {"nombre":"Quinteto Imperial","img":"https://iili.io/KbDQzPV.md.jpg","descripcion":"Un clásico de la movida tropical. Elegancia y sentimiento en cada presentación."},
-  {"nombre":"Los Avila","img":"https://iili.io/KbDZn5X.md.jpg","descripcion":"Familia musical con talento y experiencia. Cumbia auténtica para cualquier ocasión."},
-  {"nombre":"Maty los Gedes","img":"https://iili.io/KbDZpEl.md.jpg","descripcion":"Cumbia fiestera y popular. Buen humor, ritmo y conexión con el público."},
-  {"nombre":"Grupo Karicia","img":"","descripcion":"Románticos y populares. Una propuesta con historia y emoción."},
-  {"nombre":"Q' Lokura","img":"https://iili.io/KbDt1aI.md.jpg","descripcion":"Show explosivo y alegre. Cumbia cordobesa con mucha energía."},
-  {"nombre":"Daniel Cardozo","img":"https://iili.io/KbDDzP4.md.jpg","descripcion":"Voz inconfundible y estilo propio. Cumbia romántica con identidad."},
-  {"nombre":"Ángeles Negros","img":"https://iili.io/KbDbthg.md.jpg","descripcion":"Leyendas del romanticismo tropical. Emoción y calidad sobre el escenario."},
-  {"nombre":"Ingrato Corazón","img":"https://iili.io/Kbyb21a.md.jpg","descripcion":"Cumbia con sentimiento y mensaje. Ideal para shows íntimos y festivales."},
-  {"nombre":"Luz Mala","img":"https://iili.io/KbybS4a.md.jpg","descripcion":"Cumbia fusión con actitud. Sonido fuerte, moderno y distinto."},
-  {"nombre":"César Agrupación Marilyn","img":"https://iili.io/KbymkAl.md.jpg","descripcion":"Una marca registrada en la cumbia romántica. Trayectoria y corazón."},
-  {"nombre":"Pasteles Verdes","img":"https://iili.io/KydqxFn.md.jpg","descripcion":"Con su estilo inconfundible, melodías que acarician el alma y voces que aún hoy despiertan recuerdos."},
-  {"nombre":"Xochitl","img":"","descripcion":"Fusión latina con estilo tropical. Ideal para eventos elegantes y festivos."},
-  {"nombre":"Maykel Romero","img":"","descripcion":"Cumbia urbana y energía joven. Productor y artista de proyección internacional."},
-  {"nombre":"7 Lunas","img":"","descripcion":"Agrupación melódica con estilo romántico. Cumbia suave y elegante."},
-  {"nombre":"Arturo Jaimes y Los Cantantes","img":"","descripcion":"Leyendas de la cumbia internacional. Clásicos que siguen vigentes."}
-]
+fetch("./artistas.json")
+.then(r => r.json())
+.then(lista => {
+  const container = document.getElementById("artistas-container");
+  if (!container) return;
+
+  lista.forEach(a => {
+    const foto = a.img && a.img.length > 5 ? a.img : "https://iili.io/KtXqRHJ.md.png";
+
+    const slide = document.createElement("div");
+    slide.className = "swiper-slide";
+
+    slide.innerHTML = `
+      <div class="card-artista">
+        <img src="${foto}" alt="${a.nombre}">
+        <h3>${a.nombre}</h3>
+        <p>${a.descripcion}</p>
+        <button class="btn-contratar" onclick="contratar('${a.nombre.replace(/'/g, "\\'")}')">🎤 Contratar Artista</button>
+      </div>
+    `;
+
+    container.appendChild(slide);
+  });
+
+  new Swiper('.artistas-swiper', {
+    slidesPerView: 3,
+    spaceBetween: 30,
+    loop: true,
+    autoplay: { delay: 3500 },
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev'
+    },
+    breakpoints: {
+      320: { slidesPerView: 1 },
+      768: { slidesPerView: 2 },
+      1024: { slidesPerView: 3 }
+    }
+  });
+})
+.catch(() => {});
+
+fetch("./galeria.json")
+.then(r => r.json())
+.then(fotos => {
+  const ultimas = document.getElementById("ultimas-galeria");
+  if (ultimas) {
+    ultimas.innerHTML = "";
+    fotos.slice(0, 6).forEach(link => {
+      const img = document.createElement("img");
+      img.src = link;
+      ultimas.appendChild(img);
+    });
+  }
+
+  const galeria = document.getElementById("galeria-extras");
+  const btnMas = document.getElementById("btn-ver-mas");
+  const btnMenos = document.getElementById("btn-ver-menos");
+
+  let cantidad = 20;
+
+  function render(){
+    if (!galeria) return;
+
+    galeria.innerHTML = "";
+    fotos.slice(0, cantidad).forEach(link => {
+      const img = document.createElement("img");
+      img.src = link;
+      galeria.appendChild(img);
+    });
+
+    if (btnMenos) btnMenos.style.display = cantidad > 20 ? "block" : "none";
+    if (btnMas) btnMas.style.display = cantidad >= fotos.length ? "none" : "block";
+  }
+
+  if (btnMas) btnMas.addEventListener("click", () => {
+    cantidad += 20;
+    render();
+  });
+
+  if (btnMenos) btnMenos.addEventListener("click", () => {
+    cantidad = 20;
+    render();
+    window.location.hash = "#galeria";
+  });
+
+  render();
+
+  const btnAbrir = document.getElementById("btn-abrir-galeria");
+  const seccionGaleria = document.getElementById("galeria");
+
+  if (btnAbrir && seccionGaleria) {
+    btnAbrir.addEventListener("click", () => {
+      seccionGaleria.style.display = "block";
+      setTimeout(() => {
+        seccionGaleria.scrollIntoView({ behavior: "smooth" });
+      }, 100);
+    });
+  }
+
+  const btnCerrar = document.getElementById("btn-cerrar-galeria");
+  const seccionUltimas = document.getElementById("ultimas-fotos");
+
+  if (btnCerrar && seccionGaleria) {
+    btnCerrar.addEventListener("click", () => {
+      seccionGaleria.style.display = "none";
+      if (seccionUltimas) {
+        setTimeout(() => {
+          seccionUltimas.scrollIntoView({ behavior: "smooth" });
+        }, 100);
+      }
+    });
+  }
+})
+.catch(() => {});
