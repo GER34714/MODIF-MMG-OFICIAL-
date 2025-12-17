@@ -1,277 +1,241 @@
-* { box-sizing: border-box; }
-html, body { margin: 0; padding: 0; }
-body {
-  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-  color: #fff;
-  background: radial-gradient(1200px 600px at 50% -10%, rgba(185,124,255,.30), transparent 60%),
-              radial-gradient(900px 500px at 10% 10%, rgba(0,255,220,.10), transparent 65%),
-              #0b0614;
-  overflow-x: hidden;
-
-  /* evita que el botón de WhatsApp tape contenido */
-  padding-bottom: calc(110px + env(safe-area-inset-bottom, 0px));
+/* =========================
+     style.css (COMPLETO)
+========================= */
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
 }
 
-#particles-js {
-  position: fixed;
-  inset: 0;
-  z-index: -1;
-  pointer-events: none;
+body{
+  font-family:'Poppins',sans-serif;
+  background:url("https://iili.io/KbTijol.jpg") center/cover fixed;
+  color:#fff;
 }
 
-.hero {
-  padding: 56px 18px 26px;
-  text-align: center;
+/* Fondo partículas */
+#particles-js{
+  position:fixed;
+  top:0;left:0;
+  width:100%;height:100%;
+  z-index:-1;
 }
 
-.logo {
-  width: min(210px, 70vw);
-  display: block;
-  margin: 0 auto 14px;
-  filter: drop-shadow(0 0 22px rgba(185,124,255,.25));
+/* HERO */
+.hero{text-align:center;padding:60px 20px;}
+.logo{width:180px;filter:drop-shadow(0 0 30px #b97cff);}
+.hero h1{margin-top:15px;text-shadow:0 0 20px #b97cff,0 0 40px #d4af37;}
+
+.menu{
+  margin-top:25px;
+  display:flex;
+  gap:15px;
+  justify-content:center;
+  flex-wrap:wrap;
+}
+.menu a{
+  text-decoration:none;
+  color:#fff;
+  padding:6px 12px;
+  background:rgba(0,0,0,0.4);
+  border-radius:12px;
+  transition:.3s;
+}
+.menu a:hover{
+  background:#b97cff;
+  box-shadow:0 0 20px #d4af37;
 }
 
-.hero-title {
-  margin: 0 0 8px;
-  font-size: clamp(22px, 3.8vw, 36px);
-  letter-spacing: .2px;
+.section{text-align:center;padding:60px 20px;}
+.titulo-seccion{
+  font-size:1.8rem;
+  margin-bottom:25px;
+  text-shadow:0 0 15px #b97cff,0 0 25px #d4af37;
 }
 
-.hero-sub {
-  margin: 0 0 18px;
-  opacity: .9;
+/* ====================== ARTISTAS CARD ====================== */
+
+.card-artista{
+  background:rgba(0,0,0,0.55);
+  padding:18px;
+  border-radius:18px;
+  box-shadow:0 0 20px rgba(185,124,255,0.4);
+  transition:.3s;
+  text-align:center;
 }
 
-.menu {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  justify-content: center;
+.card-artista:hover{
+  transform:scale(1.05);
+  box-shadow:0 0 35px rgba(212,175,55,0.7);
 }
 
-.menu a {
-  text-decoration: none;
-  color: #fff;
-  padding: 10px 14px;
-  border-radius: 999px;
-  background: rgba(255,255,255,.08);
-  border: 1px solid rgba(255,255,255,.10);
-  backdrop-filter: blur(6px);
-  transition: transform .15s ease, background .15s ease;
-}
-.menu a:active { transform: scale(.98); }
-.menu a:hover { background: rgba(185,124,255,.18); }
-
-.section {
-  padding: 46px 18px;
-  max-width: 1100px;
-  margin: 0 auto;
+/* FOTO CUADRADA */
+.card-artista img{
+  width:100%;
+  height:250px;
+  object-fit:cover;
+  object-position:center;
+  background:#000;
+  border-radius:12px;
+  margin-bottom:20px;
+  box-shadow:0 0 15px rgba(185,124,255,0.3);
 }
 
-.titulo-seccion {
-  margin: 0 0 22px;
-  font-size: clamp(20px, 3vw, 28px);
+/* Nombre */
+.card-artista h3{
+  margin-bottom:12px;
+  font-size:1.2rem;
+  text-shadow:0 0 10px #b97cff;
 }
 
-.destacados-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
-  gap: 14px;
+/* Descripción */
+.card-artista p{
+  font-size:0.95rem;
+  line-height:1.45em;
+  margin-bottom:25px;
+  color:#eee;
 }
 
-.card-artista {
-  background: rgba(255,255,255,.06);
-  border: 1px solid rgba(255,255,255,.10);
-  border-radius: 16px;
-  overflow: hidden;
-  backdrop-filter: blur(8px);
-  box-shadow: 0 10px 26px rgba(0,0,0,.25);
+/* BOTÓN CONTRATAR */
+.btn-contratar{
+  background:linear-gradient(90deg,#d4af37,#ffcc70,#d4af37);
+  background-size:300% 300%;
+  color:#000;
+  border:none;
+  padding:10px 20px;
+  border-radius:30px;
+  font-weight:700;
+  cursor:pointer;
+  margin:auto;
+  display:block;
+  text-align:center;
+  box-shadow:0 0 25px rgba(212,175,55,0.7);
+  animation:glowBtn 3s infinite alternate;
+}
+.btn-contratar:hover{
+  transform:scale(1.07);
+  background-position:right center;
 }
 
-.card-artista img {
-  width: 100%;
-  height: 180px;
-  object-fit: cover;
-  display: block;
+@keyframes glowBtn{
+  0%{box-shadow:0 0 20px #b97cff;}
+  100%{box-shadow:0 0 35px #ffcc70;}
 }
 
-.card-artista .info {
-  padding: 12px;
-}
-.card-artista .info h3 {
-  margin: 0;
-  font-size: 16px;
-  line-height: 1.2;
-}
+/* ================= GALERÍA (CUADRADA PREMIUM) ================= */
 
-.artistas-swiper {
-  padding: 8px 6px 34px;
+.galeria-texto{
+  margin-bottom:25px;
+  font-size:1.1rem;
+  opacity:0.85;
 }
 
-.swiper-button-next,
-.swiper-button-prev {
-  color: #fff;
-  text-shadow: 0 0 16px rgba(185,124,255,.35);
+.grid-galeria{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:15px;
+  margin-top:20px;
 }
 
-.swiper-pagination-bullet { opacity: .45; }
-.swiper-pagination-bullet-active { opacity: 1; }
-
-.video-wrap {
-  width: 100%;
-  border-radius: 18px;
-  overflow: hidden;
-  border: 1px solid rgba(255,255,255,.12);
-  background: rgba(255,255,255,.04);
-  box-shadow: 0 10px 26px rgba(0,0,0,.25);
+.grid-galeria img{
+  width:100%;
+  height:250px;
+  object-fit:cover;
+  border-radius:12px;
+  box-shadow:0 0 20px rgba(185,124,255,0.4);
+  transition:.3s;
+}
+.grid-galeria img:hover{
+  transform:scale(1.05);
+  box-shadow:0 0 40px rgba(212,175,55,0.8);
 }
 
-.youtube {
-  width: 100%;
-  aspect-ratio: 16 / 9;
-  display: block;
+/* SWIPER MOBILE */
+.galeria-swiper{display:none;}
+@media (max-width:768px){
+  #galeria-grid{display:none;}
+  .galeria-swiper{display:block;}
+  .galeria-swiper img{
+    width:100%;
+    height:250px;
+    object-fit:cover;
+    border-radius:12px;
+  }
 }
 
-.video-cta {
-  margin-top: 14px;
-  display: flex;
-  justify-content: center;
+/* BOTONES VER MAS / MENOS */
+.btn-ver{
+  margin-top:25px;
+  padding:10px 20px;
+  border-radius:25px;
+  border:none;
+  background:#b97cff;
+  color:#fff;
+  font-weight:700;
+  cursor:pointer;
+  box-shadow:0 0 15px #b97cff;
+}
+.btn-ver:hover{transform:scale(1.05);}
+.oculto{display:none;}
+
+/* INSTAGRAM BUTTON */
+.btn-instagram{
+  display:inline-block;
+  padding:14px 25px;
+  background:linear-gradient(45deg,#ff0077,#b97cff,#6e00ff);
+  color:white;
+  border-radius:35px;
+  font-size:1.1rem;
+  font-weight:700;
+  text-decoration:none;
+  box-shadow:0 0 25px rgba(185,124,255,.7);
+  transition:.3s;
+}
+.btn-instagram:hover{transform:scale(1.08);}
+
+/* FOOTER */
+footer{
+  margin-top:60px;
+  text-align:center;
+  padding:30px;
+  background:rgba(0,0,0,0.7);
+}
+.firma-ciborg{
+  color:#00ffff;
+  text-shadow:0 0 10px #00ffff;
 }
 
-.btn-secundario {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  padding: 12px 16px;
-  border-radius: 999px;
-  text-decoration: none;
-  color: #fff;
-  border: 1px solid rgba(255,255,255,.14);
-  background: rgba(255,255,255,.08);
+/* WHATSAPP */
+.whatsapp{
+  position:fixed;
+  bottom:25px;
+  right:25px;
+  width:65px;height:65px;
+  border-radius:50%;
+  background:#25D366;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  box-shadow:0 0 20px rgba(0,0,0,0.6);
 }
+.whatsapp img{width:40px;height:40px}
 
-.btn-instagram {
-  display: inline-block;
-  text-decoration: none;
-  color: #fff;
-  padding: 14px 18px;
-  border-radius: 999px;
-  background: linear-gradient(90deg, rgba(185,124,255,.85), rgba(0,255,220,.35));
-  border: 1px solid rgba(255,255,255,.14);
-  box-shadow: 0 10px 26px rgba(0,0,0,.25);
+/* ===== AJUSTE PRO (solo sección Últimas fotos) ===== */
+#galeria .grid-galeria{
+  max-width:1100px;
+  margin:20px auto 0;
 }
-
-.sponsors-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 14px;
+#galeria .grid-galeria img{
+  height:240px;
 }
-
-.sponsor-card {
-  text-decoration: none;
-  color: #fff;
-  background: rgba(255,255,255,.06);
-  border: 1px solid rgba(255,255,255,.10);
-  border-radius: 16px;
-  overflow: hidden;
-  display: grid;
-  grid-template-rows: auto 1fr;
+.galeria-botones{
+  margin-top:22px;
+  display:flex;
+  justify-content:center;
+  gap:12px;
+  flex-wrap:wrap;
 }
-
-.sponsor-card img {
-  width: 100%;
-  height: 140px;
-  object-fit: cover;
-  display: block;
-}
-
-.sponsor-card span {
-  padding: 12px 14px;
-  opacity: .95;
-}
-
-.test-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 14px;
-}
-
-.test-box {
-  background: rgba(255,255,255,.06);
-  border: 1px solid rgba(255,255,255,.10);
-  border-radius: 16px;
-  padding: 14px;
-}
-
-.grid-galeria {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-  gap: 10px;
-}
-
-.grid-galeria img {
-  width: 100%;
-  height: 140px;
-  object-fit: cover;
-  border-radius: 14px;
-  border: 1px solid rgba(255,255,255,.10);
-  display: block;
-}
-
-.galeria-box {
-  background: rgba(255,255,255,.05);
-  border: 1px solid rgba(255,255,255,.10);
-  border-radius: 18px;
-  padding: 18px;
-}
-
-.subtitulo-galeria {
-  margin: 0 0 14px;
-  opacity: .9;
-}
-
-.galeria-botones {
-  margin-top: 14px;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  justify-content: center;
-}
-
-.btn-contratar.btn-vermas {
-  padding: 12px 16px;
-  border-radius: 999px;
-  border: 1px solid rgba(255,255,255,.14);
-  background: rgba(185,124,255,.22);
-  color: #fff;
-  cursor: pointer;
-}
-
-footer {
-  padding: 26px 18px 40px;
-  text-align: center;
-  opacity: .9;
-}
-
-.firma-ciborg { color: #b97cff; text-decoration: none; }
-
-.whatsapp {
-  position: fixed;
-  right: 18px;
-  bottom: calc(18px + env(safe-area-inset-bottom, 0px));
-  width: 58px;
-  height: 58px;
-  border-radius: 999px;
-  display: grid;
-  place-items: center;
-  background: rgba(0,0,0,.20);
-  border: 1px solid rgba(255,255,255,.14);
-  backdrop-filter: blur(6px);
-  z-index: 9999;
-}
-
-.whatsapp img {
-  width: 38px;
-  height: 38px;
-  display: block;
+.btn-vermas{
+  max-width:420px;
+  width:100%;
 }
