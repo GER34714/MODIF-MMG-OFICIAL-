@@ -19,6 +19,7 @@
 
 <header class="hero">
   <img src="https://iili.io/KtXqRHJ.md.png" class="logo" alt="MMG Logo">
+
   <h1 class="hero-title">Representación Oficial de la Movida Tropical</h1>
   <p class="hero-sub">Shows • Booking • Contrataciones • Difusión</p>
 
@@ -26,16 +27,17 @@
     <a href="#destacados">Destacados</a>
     <a href="#artistas">Artistas</a>
     <a href="#videos">Canal</a>
-    <a href="#galeria">Fotos</a>
+    <a href="#instagram">Instagram</a>
     <a href="#sponsors">Sponsors</a>
     <a href="#testimonios">Testimonios</a>
+    <a href="#galeria">Fotos</a>
   </nav>
 </header>
 
 <section id="destacados" class="section">
   <h2 class="titulo-seccion">🔥 Artistas Destacados</h2>
 
-  <div id="destacados-swiper" class="swiper artistas-swiper">
+  <div class="swiper artistas-swiper" id="destacados-swiper">
     <div class="swiper-wrapper" id="destacados-container"></div>
     <div class="swiper-button-prev destacados-prev"></div>
     <div class="swiper-button-next destacados-next"></div>
@@ -45,7 +47,7 @@
 <section id="artistas" class="section">
   <h2 class="titulo-seccion">🎤 Catálogo de Artistas</h2>
 
-  <div id="catalogo-swiper" class="swiper artistas-swiper">
+  <div class="swiper artistas-swiper" id="catalogo-swiper">
     <div class="swiper-wrapper" id="artistas-container"></div>
     <div class="swiper-button-prev catalogo-prev"></div>
     <div class="swiper-button-next catalogo-next"></div>
@@ -55,19 +57,15 @@
 <section id="videos" class="section">
   <h2 class="titulo-seccion">📺 El canal de las estrellas OK</h2>
 
-  <div class="sponsors-box">
-    <p style="margin:0 0 14px;">Shows, entrevistas, lanzamientos y contenido exclusivo.</p>
-
-    <div class="insta-cta" style="margin:0 0 14px;">
-      <a href="https://www.youtube.com/@elcanaldelasestrellasok/videos" target="_blank" class="btn-instagram">
-        ▶️ Ver canal completo en YouTube
-      </a>
-    </div>
-
-    <iframe class="youtube"
-      src="https://www.youtube.com/embed/videoseries?list=UURKCN_xpraIbiZU91kXA94w"
-      frameborder="0" allowfullscreen></iframe>
+  <div class="insta-cta" style="margin:0 0 16px;">
+    <a href="https://www.youtube.com/@elcanaldelasestrellasok/videos" target="_blank" class="btn-instagram">
+      ▶️ Ver canal completo en YouTube
+    </a>
   </div>
+
+  <iframe class="youtube"
+    src="https://www.youtube.com/embed/videoseries?list=UURKCN_xpraIbiZU91kXA94w"
+    frameborder="0" allowfullscreen></iframe>
 </section>
 
 <section id="instagram" class="section">
@@ -80,28 +78,20 @@
   </div>
 </section>
 
-<section id="galeria" class="section">
-  <h2 class="titulo-seccion">📸 Últimas fotos agregadas</h2>
-
-  <div id="ultimas-galeria" class="grid-galeria"></div>
-
-  <div class="galeria-botones">
-    <button id="btn-abrir-galeria" class="btn-contratar btn-vermas">📂 Ver galería completa</button>
-  </div>
-</section>
-
 <section id="sponsors" class="section">
   <h2 class="titulo-seccion">🤝 Sponsors & Partners</h2>
 
   <div class="test-grid">
-    <a href="https://radioimagen.onrender.com" target="_blank" class="test-box" style="text-decoration:none; color:inherit;">
-      <div style="font-weight:900; margin-bottom:8px;">RADIO IMAGEN</div>
+    <a href="https://radioimagen.onrender.com" target="_blank" class="test-box" style="text-decoration:none;color:inherit;">
+      <img src="https://iili.io/fR6g61S.png" alt="Radio Imagen" style="width:110px;height:auto;display:block;margin:0 auto 12px;border-radius:14px;">
+      <div style="font-weight:900;margin-bottom:8px;">RADIO IMAGEN</div>
       <div>Escuchá Radio Imagen!</div>
       <div>Música las 24 hs!</div>
     </a>
 
-    <a href="https://tio-sergio.onrender.com" target="_blank" class="test-box" style="text-decoration:none; color:inherit;">
-      <div style="font-weight:900; margin-bottom:8px;">TÍO SERGIO</div>
+    <a href="https://tio-sergio.onrender.com" target="_blank" class="test-box" style="text-decoration:none;color:inherit;">
+      <img src="https://iili.io/KpcJDEG.md.png" alt="Tío Sergio" style="width:110px;height:auto;display:block;margin:0 auto 12px;border-radius:14px;">
+      <div style="font-weight:900;margin-bottom:8px;">TÍO SERGIO</div>
       <div>"El lugar de los mayores"</div>
     </a>
   </div>
@@ -117,21 +107,18 @@
   </div>
 </section>
 
-<footer>
-  <p>© 2025 MMG Manager Music Group™ · Página Oficial</p>
-  <p>Gracias a artistas, DJs, cámaras, sonidistas, productores y a cada persona que hace posible este proyecto.</p>
-  <p>Creado y Diseñado por 
-    <a href="https://ciborg347.onrender.com" target="_blank" class="firma-ciborg">Ciborg 347™</a>
-  </p>
-</footer>
+<section id="galeria" class="section">
+  <h2 class="titulo-seccion">📸 Últimas fotos agregadas</h2>
 
-<a href="https://wa.me/5491157343551?text=Hola!%20Quiero%20info%20sobre%20artistas%20MMG"
- class="whatsapp" target="_blank" style="bottom:120px;">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
-</a>
+  <div id="ultimas-galeria" class="grid-galeria"></div>
 
-<div id="galeria-modal" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,.92); z-index:9999; overflow:auto; padding:22px;">
-  <div class="galeria-box" style="max-width:1100px; margin:0 auto;">
+  <div class="galeria-botones">
+    <button id="btn-abrir-galeria" class="btn-contratar btn-vermas">📂 Ver galería completa</button>
+  </div>
+</section>
+
+<div id="galeria-modal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.92);z-index:9999;overflow:auto;padding:22px;">
+  <div class="galeria-box" style="max-width:1100px;margin:0 auto;">
     <h2 class="titulo-seccion">📸 Galería MMG</h2>
     <h3 class="subtitulo-galeria">Shows • Backstage • Momentos MMG</h3>
 
@@ -144,6 +131,18 @@
     </div>
   </div>
 </div>
+
+<footer>
+  <p>© 2025 MMG Manager Music Group™ · Página Oficial</p>
+  <p>Gracias a artistas, DJs, cámaras, sonidistas, productores y a cada persona que hace posible este proyecto.</p>
+  <p>Creado y Diseñado por
+    <a href="https://ciborg347.onrender.com" target="_blank" class="firma-ciborg">Ciborg 347™</a>
+  </p>
+</footer>
+
+<a href="https://wa.me/5491157343551?text=Hola!%20Quiero%20info%20sobre%20artistas%20MMG" class="whatsapp" target="_blank" style="bottom:120px;">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+</a>
 
 <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
