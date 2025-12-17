@@ -1,3 +1,4 @@
+// script.js
 particlesJS('particles-js', {
   particles:{
     number:{value:70},
@@ -15,38 +16,53 @@ function contratar(nombre){
   window.open(`https://wa.me/${numero}?text=${mensaje}`, "_blank");
 }
 
-fetch("./artistas.json")
-.then(r => r.json())
-.then(lista => {
-  const container = document.getElementById("artistas-container");
-  if (!container) return;
+function normName(s){
+  return String(s || "")
+    .toLowerCase()
+    .normalize("NFD").replace(/[\u0300-\u036f]/g, "")
+    .replace(/\s+/g, " ")
+    .trim();
+}
 
-  lista.forEach(a => {
-    const foto = a.img && a.img.length > 5 ? a.img : "https://iili.io/KtXqRHJ.md.png";
+function safeOnClickName(nombre){
+  return String(nombre || "").replace(/'/g, "\\'");
+}
 
-    const slide = document.createElement("div");
-    slide.className = "swiper-slide";
+const DESTACADOS = [
+  "damy levante",
+  "delro",
+  "los creadores",
+  "dario el angel del amor",
+  "axel flp",
+  "kevin quiroz",
+  "franco flow 999",
+  "tomy lp"
+].map(normName);
 
-    slide.innerHTML = `
-      <div class="card-artista">
-        <img src="${foto}" alt="${a.nombre}">
-        <h3>${a.nombre}</h3>
-        <p>${a.descripcion}</p>
-        <button class="btn-contratar" onclick="contratar('${String(a.nombre).replace(/'/g, "\\'")}')">🎤 Contratar Artista</button>
-      </div>
-    `;
+function buildSlideHTML(a){
+  const foto = a.img && a.img.length > 5 ? a.img : "https://iili.io/KtXqRHJ.md.png";
+  const nombre = a.nombre || "Artista";
+  const descripcion = a.descripcion || "";
 
-    container.appendChild(slide);
-  });
+  return `
+    <div class="card-artista">
+      <img src="${foto}" alt="${nombre}">
+      <h3>${nombre}</h3>
+      <p>${descripcion}</p>
+      <button class="btn-contratar" onclick="contratar('${safeOnClickName(nombre)}')">🎤 Contratar Artista</button>
+    </div>
+  `;
+}
 
-  new Swiper('.artistas-swiper', {
+function initSwiperById(swiperId, prevClass, nextClass){
+  return new Swiper(swiperId, {
     slidesPerView: 3,
     spaceBetween: 30,
     loop: true,
-    autoplay: { delay: 3500 },
+    autoplay: { delay: 3500, disableOnInteraction: false },
     navigation: {
-      nextEl: '.swiper-button-next',
-      prevEl: '.swiper-button-prev'
+      nextEl: `.${nextClass}`,
+      prevEl: `.${prevClass}`
     },
     breakpoints: {
       320: { slidesPerView: 1 },
@@ -54,74 +70,115 @@ fetch("./artistas.json")
       1024: { slidesPerView: 3 }
     }
   });
-})
-.catch(err => console.log("Error artistas.json:", err));
+}
+
+fetch("./artistas.json")
+  .then(r => {
+    if(!r.ok) throw new Error("No se pudo cargar artistas.json");
+    return r.json();
+  })
+  .then(lista => {
+    const contDest = document.getElementById("destacados-container");
+    const contCat = document.getElementById("artistas-container");
+    if (!contDest || !contCat) return;
+
+    const destacados = [];
+    const resto = [];
+
+    lista.forEach(a => {
+      const n = normName(a.nombre);
+      if (DESTACADOS.includes(n)) destacados.push(a);
+      else resto.push(a);
+    });
+
+    destacados.sort((a,b) => DESTACADOS.indexOf(normName(a.nombre)) - DESTACADOS.indexOf(normName(b.nombre)));
+
+    const catalogoOrdenado = [...destacados, ...resto];
+
+    destacados.forEach(a => {
+      const slide = document.createElement("div");
+      slide.className = "swiper-slide";
+      slide.innerHTML = buildSlideHTML(a);
+      contDest.appendChild(slide);
+    });
+
+    catalogoOrdenado.forEach(a => {
+      const slide = document.createElement("div");
+      slide.className = "swiper-slide";
+      slide.innerHTML = buildSlideHTML(a);
+      contCat.appendChild(slide);
+    });
+
+    initSwiperById("#destacados-swiper", "destacados-prev", "destacados-next");
+    initSwiperById("#catalogo-swiper", "catalogo-prev", "catalogo-next");
+  })
+  .catch(err => console.log("Error artistas:", err));
 
 fetch("./galeria.json")
-.then(r => r.json())
-.then(fotos => {
+  .then(r => {
+    if(!r.ok) throw new Error("No se pudo cargar galeria.json");
+    return r.json();
+  })
+  .then(fotos => {
+    const ultimas = document.getElementById("ultimas-galeria");
+    if (ultimas) {
+      ultimas.innerHTML = "";
+      fotos.slice(0, 9).forEach(link => {
+        const img = document.createElement("img");
+        img.src = link;
+        ultimas.appendChild(img);
+      });
+    }
 
-  const ultimas = document.getElementById("ultimas-galeria");
-  if (ultimas) {
-    ultimas.innerHTML = "";
-    fotos.slice(0, 6).forEach(link => {
-      const img = document.createElement("img");
-      img.src = link;
-      ultimas.appendChild(img);
+    const galeria = document.getElementById("galeria-extras");
+    const btnMas = document.getElementById("btn-ver-mas");
+    const btnMenos = document.getElementById("btn-ver-menos");
+
+    let cantidad = 20;
+
+    function render(){
+      if (!galeria) return;
+
+      galeria.innerHTML = "";
+      fotos.slice(0, cantidad).forEach(link => {
+        const img = document.createElement("img");
+        img.src = link;
+        galeria.appendChild(img);
+      });
+
+      if (btnMenos) btnMenos.style.display = cantidad > 20 ? "block" : "none";
+      if (btnMas) btnMas.style.display = cantidad >= fotos.length ? "none" : "block";
+    }
+
+    if (btnMas) btnMas.addEventListener("click", () => {
+      cantidad += 20;
+      render();
     });
-  }
 
-  const galeria = document.getElementById("galeria-extras");
-  const btnMas = document.getElementById("btn-ver-mas");
-  const btnMenos = document.getElementById("btn-ver-menos");
-
-  let cantidad = 20;
-
-  function render(){
-    if (!galeria) return;
-
-    galeria.innerHTML = "";
-    fotos.slice(0, cantidad).forEach(link => {
-      const img = document.createElement("img");
-      img.src = link;
-      galeria.appendChild(img);
+    if (btnMenos) btnMenos.addEventListener("click", () => {
+      cantidad = 20;
+      render();
+      window.location.hash = "#galeria";
     });
 
-    if (btnMenos) btnMenos.style.display = cantidad > 20 ? "block" : "none";
-    if (btnMas) btnMas.style.display = cantidad >= fotos.length ? "none" : "block";
-  }
-
-  if (btnMas) btnMas.addEventListener("click", () => {
-    cantidad += 20;
     render();
-  });
 
-  if (btnMenos) btnMenos.addEventListener("click", () => {
-    cantidad = 20;
-    render();
-    window.location.hash = "#galeria";
-  });
+    const btnAbrir = document.getElementById("btn-abrir-galeria");
+    const seccionGaleria = document.getElementById("galeria");
+    if (btnAbrir && seccionGaleria) {
+      btnAbrir.addEventListener("click", () => {
+        seccionGaleria.style.display = "block";
+        setTimeout(() => seccionGaleria.scrollIntoView({ behavior: "smooth" }), 120);
+      });
+    }
 
-  render();
-
-  const btnAbrir = document.getElementById("btn-abrir-galeria");
-  const seccionGaleria = document.getElementById("galeria");
-
-  if (btnAbrir && seccionGaleria) {
-    btnAbrir.addEventListener("click", () => {
-      seccionGaleria.style.display = "block";
-      setTimeout(() => seccionGaleria.scrollIntoView({ behavior: "smooth" }), 100);
-    });
-  }
-
-  const btnCerrar = document.getElementById("btn-cerrar-galeria");
-  const seccionUltimas = document.getElementById("ultimas-fotos");
-
-  if (btnCerrar && seccionGaleria) {
-    btnCerrar.addEventListener("click", () => {
-      seccionGaleria.style.display = "none";
-      if (seccionUltimas) setTimeout(() => seccionUltimas.scrollIntoView({ behavior: "smooth" }), 100);
-    });
-  }
-})
-.catch(err => console.log("Error galeria.json:", err));
+    const btnCerrar = document.getElementById("btn-cerrar-galeria");
+    const seccionPreview = document.getElementById("galeria-preview");
+    if (btnCerrar && seccionGaleria) {
+      btnCerrar.addEventListener("click", () => {
+        seccionGaleria.style.display = "none";
+        if (seccionPreview) setTimeout(() => seccionPreview.scrollIntoView({ behavior: "smooth" }), 120);
+      });
+    }
+  })
+  .catch(err => console.log("Error galería:", err));
