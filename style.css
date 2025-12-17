@@ -1,218 +1,80 @@
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #0b0614;
+  color: #fff;
+  padding-bottom: 90px;
 }
 
-body{
-  font-family:'Poppins',sans-serif;
-  background:url("https://iili.io/KbTijol.jpg") center/cover fixed;
-  color:#fff;
+.hero {
+  text-align: center;
+  padding: 60px 20px;
 }
 
-/* Fondo partículas */
-#particles-js{
-  position:fixed;
-  top:0;left:0;
-  width:100%;height:100%;
-  z-index:-1;
+.logo { max-width: 180px; }
+
+.menu a {
+  margin: 0 10px;
+  color: #b97cff;
+  text-decoration: none;
 }
 
-/* HERO */
-.hero{text-align:center;padding:60px 20px;}
-.logo{width:180px;filter:drop-shadow(0 0 30px #b97cff);}
-.hero h1{margin-top:15px;text-shadow:0 0 20px #b97cff,0 0 40px #d4af37;}
-
-.menu{
-  margin-top:25px;
-  display:flex;
-  gap:15px;
-  justify-content:center;
-  flex-wrap:wrap;
-}
-.menu a{
-  text-decoration:none;
-  color:#fff;
-  padding:6px 12px;
-  background:rgba(0,0,0,0.4);
-  border-radius:12px;
-  transition:.3s;
-}
-.menu a:hover{
-  background:#b97cff;
-  box-shadow:0 0 20px #d4af37;
+.section {
+  padding: 60px 20px;
+  text-align: center;
 }
 
-.section{text-align:center;padding:60px 20px;}
-.titulo-seccion{
-  font-size:1.8rem;
-  margin-bottom:25px;
-  text-shadow:0 0 15px #b97cff,0 0 25px #d4af37;
+.titulo-seccion {
+  margin-bottom: 30px;
 }
 
-/* ====================== ARTISTAS CARD ====================== */
-
-.card-artista{
-  background:rgba(0,0,0,0.55);
-  padding:18px;
-  border-radius:18px;
-  box-shadow:0 0 20px rgba(185,124,255,0.4);
-  transition:.3s;
-  text-align:center;
+.grid-artistas,
+.grid-galeria,
+.grid-sponsors {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 20px;
 }
 
-.card-artista:hover{
-  transform:scale(1.05);
-  box-shadow:0 0 35px rgba(212,175,55,0.7);
+.card-artista {
+  background: #1a1028;
+  padding: 15px;
+  border-radius: 12px;
 }
 
-/* FOTO CUADRADA */
-.card-artista img{
-  width:100%;
-  height:250px;
-  object-fit:cover;
-  object-position:center;
-  background:#000;
-  border-radius:12px;
-  margin-bottom:20px;
-  box-shadow:0 0 15px rgba(185,124,255,0.3);
+.card-artista img {
+  width: 100%;
+  border-radius: 10px;
 }
 
-/* Nombre */
-.card-artista h3{
-  margin-bottom:12px;
-  font-size:1.2rem;
-  text-shadow:0 0 10px #b97cff;
+.youtube {
+  width: 100%;
+  max-width: 800px;
+  height: 450px;
 }
 
-/* Descripción */
-.card-artista p{
-  font-size:0.95rem;
-  line-height:1.45em;
-  margin-bottom:25px;
-  color:#eee;
+.btn-instagram,
+.btn-contratar {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 12px 20px;
+  background: #b97cff;
+  color: #000;
+  border-radius: 25px;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
 }
 
-/* BOTÓN CONTRATAR */
-.btn-contratar{
-  background:linear-gradient(90deg,#d4af37,#ffcc70,#d4af37);
-  background-size:300% 300%;
-  color:#000;
-  border:none;
-  padding:10px 20px;
-  border-radius:30px;
-  font-weight:700;
-  cursor:pointer;
-  margin:auto;
-  display:block;
-  text-align:center;
-  box-shadow:0 0 25px rgba(212,175,55,0.7);
-  animation:glowBtn 3s infinite alternate;
-}
-.btn-contratar:hover{
-  transform:scale(1.07);
-  background-position:right center;
+.whatsapp {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 60px;
 }
 
-@keyframes glowBtn{
-  0%{box-shadow:0 0 20px #b97cff;}
-  100%{box-shadow:0 0 35px #ffcc70;}
+.whatsapp img {
+  width: 100%;
 }
 
-/* ================= GALERÍA (CUADRADA PREMIUM) ================= */
-
-.galeria-texto{
-  margin-bottom:25px;
-  font-size:1.1rem;
-  opacity:0.85;
-}
-
-.grid-galeria{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-  gap:15px;
-  margin-top:20px;
-}
-
-.grid-galeria img{
-  width:100%;
-  height:250px;
-  object-fit:cover;
-  border-radius:12px;
-  box-shadow:0 0 20px rgba(185,124,255,0.4);
-  transition:.3s;
-}
-.grid-galeria img:hover{
-  transform:scale(1.05);
-  box-shadow:0 0 40px rgba(212,175,55,0.8);
-}
-
-/* SWIPER MOBILE */
-.galeria-swiper{display:none;}
-@media (max-width:768px){
-  #galeria-grid{display:none;}
-  .galeria-swiper{display:block;}
-  .galeria-swiper img{
-    width:100%;
-    height:250px;
-    object-fit:cover;
-    border-radius:12px;
-  }
-}
-
-/* BOTONES VER MAS / MENOS */
-.btn-ver{
-  margin-top:25px;
-  padding:10px 20px;
-  border-radius:25px;
-  border:none;
-  background:#b97cff;
-  color:#fff;
-  font-weight:700;
-  cursor:pointer;
-  box-shadow:0 0 15px #b97cff;
-}
-.btn-ver:hover{transform:scale(1.05);}
-.oculto{display:none;}
-
-/* INSTAGRAM BUTTON */
-.btn-instagram{
-  display:inline-block;
-  padding:14px 25px;
-  background:linear-gradient(45deg,#ff0077,#b97cff,#6e00ff);
-  color:white;
-  border-radius:35px;
-  font-size:1.1rem;
-  font-weight:700;
-  text-decoration:none;
-  box-shadow:0 0 25px rgba(185,124,255,.7);
-  transition:.3s;
-}
-.btn-instagram:hover{transform:scale(1.08);}
-
-/* FOOTER */
-footer{
-  margin-top:60px;
-  text-align:center;
-  padding:30px;
-  background:rgba(0,0,0,0.7);
-}
-.firma-ciborg{
-  color:#00ffff;
-  text-shadow:0 0 10px #00ffff;
-}
-
-/* WHATSAPP */
-.whatsapp{
-  position:fixed;
-  bottom:25px;
-  right:25px;
-  width:65px;height:65px;
-  border-radius:50%;
-  background:#25D366;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  box-shadow:0 0 20px rgba(0,0,0,0.6);
-}
-.whatsapp img{width:40px;height:40px}
+.oculto { display: none; }
