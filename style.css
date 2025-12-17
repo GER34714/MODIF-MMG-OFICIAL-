@@ -10,7 +10,7 @@ body{
   color:#fff;
 }
 
-/* Partículas */
+/* Fondo partículas */
 #particles-js{
   position:fixed;
   top:0;left:0;
@@ -21,20 +21,7 @@ body{
 /* HERO */
 .hero{text-align:center;padding:60px 20px;}
 .logo{width:180px;filter:drop-shadow(0 0 30px #b97cff);}
-
-.hero-title{
-  margin-top:15px;
-  font-size:1.8rem;
-  text-shadow:0 0 25px #b97cff,0 0 45px #d4af37;
-  font-weight:700;
-}
-
-.hero-sub{
-  margin-top:10px;
-  font-size:1rem;
-  opacity:.9;
-  text-shadow:0 0 10px #b97cff;
-}
+.hero h1{margin-top:15px;text-shadow:0 0 20px #b97cff,0 0 40px #d4af37;}
 
 .menu{
   margin-top:25px;
@@ -63,7 +50,8 @@ body{
   text-shadow:0 0 15px #b97cff,0 0 25px #d4af37;
 }
 
-/* ================= ARTISTAS ================= */
+/* ====================== ARTISTAS CARD ====================== */
+
 .card-artista{
   background:rgba(0,0,0,0.55);
   padding:18px;
@@ -73,22 +61,31 @@ body{
   text-align:center;
 }
 
+.card-artista:hover{
+  transform:scale(1.05);
+  box-shadow:0 0 35px rgba(212,175,55,0.7);
+}
+
+/* FOTO CUADRADA */
 .card-artista img{
   width:100%;
-  height:230px;
-  object-fit:contain;
+  height:250px;
+  object-fit:cover;
   object-position:center;
   background:#000;
   border-radius:12px;
   margin-bottom:20px;
+  box-shadow:0 0 15px rgba(185,124,255,0.3);
 }
 
+/* Nombre */
 .card-artista h3{
   margin-bottom:12px;
   font-size:1.2rem;
   text-shadow:0 0 10px #b97cff;
 }
 
+/* Descripción */
 .card-artista p{
   font-size:0.95rem;
   line-height:1.45em;
@@ -96,7 +93,7 @@ body{
   color:#eee;
 }
 
-/* BOTÓN */
+/* BOTÓN CONTRATAR */
 .btn-contratar{
   background:linear-gradient(90deg,#d4af37,#ffcc70,#d4af37);
   background-size:300% 300%;
@@ -110,82 +107,102 @@ body{
   display:block;
   text-align:center;
   box-shadow:0 0 25px rgba(212,175,55,0.7);
+  animation:glowBtn 3s infinite alternate;
 }
-
-/* ============= INSTAGRAM CTA ============= */
-.insta-cta{
-  display:flex;
-  justify-content:center;
-}
-
-.btn-instagram{
-  background:linear-gradient(90deg,#b97cff,#d4af37,#b97cff);
-  padding:15px 28px;
-  border-radius:40px;
-  color:white;
-  font-size:1.1rem;
-  font-weight:700;
-  text-decoration:none;
-  box-shadow:0 0 30px rgba(185,124,255,0.6);
-  transition:.3s;
-}
-
-.btn-instagram:hover{
+.btn-contratar:hover{
   transform:scale(1.07);
-  box-shadow:0 0 45px rgba(212,175,55,0.8);
+  background-position:right center;
 }
 
-/* ================= GALERÍA ================= */
-.galeria-box{
-  background:rgba(0,0,0,0.40);
-  padding:25px;
-  border-radius:18px;
-  box-shadow:0 0 25px rgba(185,124,255,0.5);
-  width:90%;
-  margin:auto;
-  border:1px solid rgba(212,175,55,0.35);
+@keyframes glowBtn{
+  0%{box-shadow:0 0 20px #b97cff;}
+  100%{box-shadow:0 0 35px #ffcc70;}
 }
 
-.subtitulo-galeria{
-  font-size:1.4rem;
-  margin:15px 0 25px;
-  text-shadow:0 0 10px #b97cff,0 0 15px #d4af37;
+/* ================= GALERÍA (CUADRADA PREMIUM) ================= */
+
+.galeria-texto{
+  margin-bottom:25px;
+  font-size:1.1rem;
+  opacity:0.85;
 }
 
 .grid-galeria{
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
   gap:15px;
+  margin-top:20px;
 }
 
 .grid-galeria img{
   width:100%;
+  height:250px;
+  object-fit:cover;
   border-radius:12px;
   box-shadow:0 0 20px rgba(185,124,255,0.4);
   transition:.3s;
 }
-
-.galeria-botones{
-  margin-top:25px;
-  display:flex;
-  justify-content:center;
-  gap:15px;
+.grid-galeria img:hover{
+  transform:scale(1.05);
+  box-shadow:0 0 40px rgba(212,175,55,0.8);
 }
 
-/* Footer */
+/* SWIPER MOBILE */
+.galeria-swiper{display:none;}
+@media (max-width:768px){
+  #galeria-grid{display:none;}
+  .galeria-swiper{display:block;}
+  .galeria-swiper img{
+    width:100%;
+    height:250px;
+    object-fit:cover;
+    border-radius:12px;
+  }
+}
+
+/* BOTONES VER MAS / MENOS */
+.btn-ver{
+  margin-top:25px;
+  padding:10px 20px;
+  border-radius:25px;
+  border:none;
+  background:#b97cff;
+  color:#fff;
+  font-weight:700;
+  cursor:pointer;
+  box-shadow:0 0 15px #b97cff;
+}
+.btn-ver:hover{transform:scale(1.05);}
+.oculto{display:none;}
+
+/* INSTAGRAM BUTTON */
+.btn-instagram{
+  display:inline-block;
+  padding:14px 25px;
+  background:linear-gradient(45deg,#ff0077,#b97cff,#6e00ff);
+  color:white;
+  border-radius:35px;
+  font-size:1.1rem;
+  font-weight:700;
+  text-decoration:none;
+  box-shadow:0 0 25px rgba(185,124,255,.7);
+  transition:.3s;
+}
+.btn-instagram:hover{transform:scale(1.08);}
+
+/* FOOTER */
 footer{
   margin-top:60px;
   text-align:center;
   padding:30px;
   background:rgba(0,0,0,0.7);
 }
-
 .firma-ciborg{
   color:#00ffff;
   text-shadow:0 0 10px #00ffff;
 }
 
-/* WhatsApp */
+/* WHATSAPP */
 .whatsapp{
   position:fixed;
   bottom:25px;
@@ -196,4 +213,6 @@ footer{
   display:flex;
   justify-content:center;
   align-items:center;
+  box-shadow:0 0 20px rgba(0,0,0,0.6);
 }
+.whatsapp img{width:40px;height:40px}
