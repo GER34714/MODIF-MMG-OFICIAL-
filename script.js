@@ -32,7 +32,7 @@ fetch("./artistas.json")
         <img src="${foto}" alt="${a.nombre}">
         <h3>${a.nombre}</h3>
         <p>${a.descripcion}</p>
-        <button class="btn-contratar" onclick="contratar('${a.nombre.replace(/'/g, "\\'")}')">🎤 Contratar Artista</button>
+        <button class="btn-contratar" onclick="contratar('${String(a.nombre).replace(/'/g, "\\'")}')">🎤 Contratar Artista</button>
       </div>
     `;
 
@@ -55,11 +55,12 @@ fetch("./artistas.json")
     }
   });
 })
-.catch(() => {});
+.catch(err => console.log("Error artistas.json:", err));
 
 fetch("./galeria.json")
 .then(r => r.json())
 .then(fotos => {
+
   const ultimas = document.getElementById("ultimas-galeria");
   if (ultimas) {
     ultimas.innerHTML = "";
@@ -109,9 +110,7 @@ fetch("./galeria.json")
   if (btnAbrir && seccionGaleria) {
     btnAbrir.addEventListener("click", () => {
       seccionGaleria.style.display = "block";
-      setTimeout(() => {
-        seccionGaleria.scrollIntoView({ behavior: "smooth" });
-      }, 100);
+      setTimeout(() => seccionGaleria.scrollIntoView({ behavior: "smooth" }), 100);
     });
   }
 
@@ -121,12 +120,8 @@ fetch("./galeria.json")
   if (btnCerrar && seccionGaleria) {
     btnCerrar.addEventListener("click", () => {
       seccionGaleria.style.display = "none";
-      if (seccionUltimas) {
-        setTimeout(() => {
-          seccionUltimas.scrollIntoView({ behavior: "smooth" });
-        }, 100);
-      }
+      if (seccionUltimas) setTimeout(() => seccionUltimas.scrollIntoView({ behavior: "smooth" }), 100);
     });
   }
 })
-.catch(() => {});
+.catch(err => console.log("Error galeria.json:", err));
