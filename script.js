@@ -1,136 +1,60 @@
-// Partículas
-particlesJS('particles-js', {
-  particles:{
-    number:{value:70},
-    color:{value:["#d4af37","#b97cff"]},
-    opacity:{value:0.5,random:true},
-    size:{value:3,random:true},
-    move:{enable:true,speed:1.4},
-    line_linked:{enable:false}
-  }
-});
-
-// CONTRATAR
-function contratar(nombre){
-  const numero = "5491157343551";
-  const mensaje = encodeURIComponent(`Hola 👋, quiero contratar a ${nombre} (MMG | Representante de Artistas).`);
-  window.open(`https://wa.me/${numero}?text=${mensaje}`, "_blank");
-}
-
-// ARTISTAS
 fetch("artistas.json")
-.then(r => r.json())
-.then(lista => {
-  const container = document.getElementById("artistas-container");
+  .then(r => r.json())
+  .then(data => {
+    const destacados = data.filter(a => a.destacado);
+    const normales = data.filter(a => !a.destacado);
 
-  lista.forEach(a => {
-    const foto = a.img && a.img.length > 5 ? a.img : "https://iili.io/KtXqRHJ.md.png";
+    const destCont = document.getElementById("destacados-container");
+    destacados.forEach(a => destCont.innerHTML += card(a));
 
-    const slide = document.createElement("div");
-    slide.className = "swiper-slide";
-
-    slide.innerHTML = `
-      <div class="card-artista">
-        <img src="${foto}">
-        <h3>${a.nombre}</h3>
-        <p>${a.descripcion}</p>
-        <button class="btn-contratar" onclick="contratar('${a.nombre}')">🎤 Contratar Artista</button>
-      </div>
-    `;
-
-    container.appendChild(slide);
-  });
-
-  new Swiper('.artistas-swiper', {
-    slidesPerView: 3,
-    spaceBetween: 30,
-    loop: true,
-    autoplay: { delay: 3500 },
-    navigation: {
-      nextEl: '.swiper-button-next',
-      prevEl: '.swiper-button-prev'
-    },
-    breakpoints: {
-      320: { slidesPerView: 1 },
-      768: { slidesPerView: 2 },
-      1024: { slidesPerView: 3 }
-    }
-  });
-});
-
-// GALERÍA
-fetch("galeria.json")
-.then(r => r.json())
-.then(fotos => {
-
-  // ✅ ÚLTIMAS FOTOS AGREGADAS (toma las primeras 6 del JSON)
-  const ultimas = document.getElementById("ultimas-galeria");
-  if (ultimas) {
-    ultimas.innerHTML = "";
-    fotos.slice(0, 6).forEach(link => {
-      const img = document.createElement("img");
-      img.src = link;
-      ultimas.appendChild(img);
-    });
-  }
-
-  const galeria = document.getElementById("galeria-extras");
-  const btnMas = document.getElementById("btn-ver-mas");
-  const btnMenos = document.getElementById("btn-ver-menos");
-
-  let cantidad = 20;
-
-  function render(){
-    galeria.innerHTML = "";
-
-    fotos.slice(0, cantidad).forEach(link => {
-      const img = document.createElement("img");
-      img.src = link;
-      galeria.appendChild(img);
+    const catCont = document.getElementById("artistas-container");
+    normales.forEach(a => {
+      const slide = document.createElement("div");
+      slide.className = "swiper-slide";
+      slide.innerHTML = card(a);
+      catCont.appendChild(slide);
     });
 
-    btnMenos.style.display = cantidad > 20 ? "block" : "none";
-    btnMas.style.display = cantidad >= fotos.length ? "none" : "block";
-  }
-
-  btnMas.addEventListener("click", () => {
-    cantidad += 20;
-    render();
-  });
-
-  btnMenos.addEventListener("click", () => {
-    cantidad = 20;
-    render();
-    window.location.hash = "#galeria";
-  });
-
-  render();
-
-  // ✅ MOSTRAR GALERÍA COMPLETA SOLO CUANDO TOCAN "VER GALERÍA COMPLETA"
-  const btnAbrir = document.getElementById("btn-abrir-galeria");
-  const seccionGaleria = document.getElementById("galeria");
-
-  if (btnAbrir && seccionGaleria) {
-    btnAbrir.addEventListener("click", () => {
-      seccionGaleria.style.display = "block";
-      setTimeout(() => {
-        seccionGaleria.scrollIntoView({ behavior: "smooth" });
-      }, 100);
-    });
-  }
-
-  // ✅ CERRAR GALERÍA (oculta y vuelve a "Últimas fotos")
-  const btnCerrar = document.getElementById("btn-cerrar-galeria");
-  const seccionUltimas = document.getElementById("ultimas-fotos");
-
-  if (btnCerrar && seccionGaleria) {
-    btnCerrar.addEventListener("click", () => {
-      seccionGaleria.style.display = "none";
-      if (seccionUltimas) {
-        setTimeout(() => {
-          seccionUltimas.scrollIntoView({ behavior: "smooth" });
-        }, 100);
+    new Swiper(".artistas-swiper", {
+      slidesPerView: 1,
+      spaceBetween: 20,
+      navigation: true,
+      breakpoints: {
+        768: { slidesPerView: 3 }
       }
     });
-  }
+  });
+
+const fotos = [
+  "https://iili.io/fcjuI.jpg",
+  "https://iili.io/fcjuI.jpg",
+  "https://iili.io/fcjuI.jpg",
+  "https://iili.io/fcjuI.jpg",
+  "https://iili.io/fcjuI.jpg",
+  "https://iili.io/fcjuI.jpg",
+  "https://iili.io/fcjuI.jpg"
+];
+
+const ult = document.getElementById("ultimas-galeria");
+const gal = document.getElementById("galeria-extras");
+
+fotos.forEach((f, i) => {
+  const img = `<img src="${f}">`;
+  if (i < 6) ult.innerHTML += img;
+  else gal.innerHTML += img;
 });
+
+document.getElementById("btn-abrir-galeria").onclick = () =>
+  document.getElementById("galeria").classList.remove("oculto");
+
+document.getElementById("btn-cerrar-galeria").onclick = () =>
+  document.getElementById("galeria").classList.add("oculto");
+
+function card(a) {
+  return `
+    <div class="card-artista">
+      <img src="${a.imagen}">
+      <h3>${a.nombre}</h3>
+    </div>
+  `;
+}
