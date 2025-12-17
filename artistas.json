@@ -1,13 +1,34 @@
 [
-  { "nombre": "Dami Levante", "imagen": "https://iili.io/fcjuI.jpg", "destacado": true },
-  { "nombre": "Delro", "imagen": "https://iili.io/fcjuI.jpg", "destacado": true },
-  { "nombre": "Los Creadores", "imagen": "https://iili.io/fcjuI.jpg", "destacado": true },
-  { "nombre": "Darío El Ángel del Amor", "imagen": "https://iili.io/fcjuI.jpg", "destacado": true },
-  { "nombre": "Axel FLP", "imagen": "https://iili.io/fcjuI.jpg", "destacado": true },
-  { "nombre": "Kevin Quiroz", "imagen": "https://iili.io/fcjuI.jpg", "destacado": true },
-  { "nombre": "Franco Flou 999", "imagen": "https://iili.io/fcjuI.jpg", "destacado": true },
-  { "nombre": "Tomy LP", "imagen": "https://iili.io/fcjuI.jpg", "destacado": true },
-
-  { "nombre": "Artista Ejemplo 1", "imagen": "https://iili.io/fcjuI.jpg" },
-  { "nombre": "Artista Ejemplo 2", "imagen": "https://iili.io/fcjuI.jpg" }
+  {
+    "nombre": "Dami Levante",
+    "imagen": "https://iili.io/fcjuI.jpg"
+  },
+  {
+    "nombre": "Delro",
+    "imagen": "https://iili.io/fcjuI.jpg"
+  },
+  {
+    "nombre": "Los Creadores",
+    "imagen": "https://iili.io/fcjuI.jpg"
+  },
+  {
+    "nombre": "Darío El Ángel del Amor",
+    "imagen": "https://iili.io/fcjuI.jpg"
+  },
+  {
+    "nombre": "Axel FLP",
+    "imagen": "https://iili.io/fcjuI.jpg"
+  },
+  {
+    "nombre": "Kevin Quiroz",
+    "imagen": "https://iili.io/fcjuI.jpg"
+  },
+  {
+    "nombre": "Franco Flou 999",
+    "imagen": "https://iili.io/fcjuI.jpg"
+  },
+  {
+    "nombre": "Tomy LP",
+    "imagen": "https://iili.io/fcjuI.jpg"
+  }
 ]
