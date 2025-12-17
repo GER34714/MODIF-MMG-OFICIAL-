@@ -59,10 +59,7 @@ function initSwiper(swiperSelector, prevClass, nextClass){
     spaceBetween: 30,
     loop: true,
     autoplay: { delay: 3500, disableOnInteraction: false },
-    navigation: {
-      nextEl: `.${nextClass}`,
-      prevEl: `.${prevClass}`
-    },
+    navigation: { nextEl: `.${nextClass}`, prevEl: `.${prevClass}` },
     breakpoints: {
       320: { slidesPerView: 1 },
       768: { slidesPerView: 2 },
@@ -72,10 +69,7 @@ function initSwiper(swiperSelector, prevClass, nextClass){
 }
 
 fetch("./artistas.json")
-  .then(r => {
-    if(!r.ok) throw new Error("No se pudo cargar artistas.json");
-    return r.json();
-  })
+  .then(r => { if(!r.ok) throw new Error("artistas.json"); return r.json(); })
   .then(lista => {
     const contDest = document.getElementById("destacados-container");
     const contCat = document.getElementById("artistas-container");
@@ -91,6 +85,7 @@ fetch("./artistas.json")
     });
 
     destacados.sort((a,b) => DESTACADOS.indexOf(normName(a.nombre)) - DESTACADOS.indexOf(normName(b.nombre)));
+
     const catalogoOrdenado = [...destacados, ...resto];
 
     destacados.forEach(a => {
@@ -110,13 +105,10 @@ fetch("./artistas.json")
     initSwiper("#destacados-swiper", "destacados-prev", "destacados-next");
     initSwiper("#catalogo-swiper", "catalogo-prev", "catalogo-next");
   })
-  .catch(err => console.log("Error artistas:", err));
+  .catch(() => {});
 
 fetch("./galeria.json")
-  .then(r => {
-    if(!r.ok) throw new Error("No se pudo cargar galeria.json");
-    return r.json();
-  })
+  .then(r => { if(!r.ok) throw new Error("galeria.json"); return r.json(); })
   .then(fotos => {
     const ultimas = document.getElementById("ultimas-galeria");
     const modal = document.getElementById("galeria-modal");
@@ -141,8 +133,8 @@ fetch("./galeria.json")
 
     function render(){
       if (!galeria) return;
-
       galeria.innerHTML = "";
+
       fotos.slice(0, cantidad).forEach(link => {
         const img = document.createElement("img");
         img.src = link;
@@ -178,4 +170,4 @@ fetch("./galeria.json")
       if (modal) modal.scrollTo({ top: 0, behavior: "smooth" });
     });
   })
-  .catch(err => console.log("Error galería:", err));
+  .catch(() => {});
