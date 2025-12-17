@@ -1,4 +1,4 @@
-// script.js
+// script.js (COMPLETO, respetando tu código + botón cerrar)
 
 // Partículas
 particlesJS('particles-js', {
@@ -118,6 +118,21 @@ fetch("galeria.json")
       setTimeout(() => {
         seccionGaleria.scrollIntoView({ behavior: "smooth" });
       }, 100);
+    });
+  }
+
+  // ✅ CERRAR GALERÍA (oculta y vuelve a "Últimas fotos")
+  const btnCerrar = document.getElementById("btn-cerrar-galeria");
+  const seccionUltimas = document.getElementById("ultimas-fotos");
+
+  if (btnCerrar && seccionGaleria) {
+    btnCerrar.addEventListener("click", () => {
+      seccionGaleria.style.display = "none";
+      if (seccionUltimas) {
+        setTimeout(() => {
+          seccionUltimas.scrollIntoView({ behavior: "smooth" });
+        }, 100);
+      }
     });
   }
 });
