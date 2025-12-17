@@ -1,3 +1,5 @@
+// script.js
+
 // Partículas
 particlesJS('particles-js', {
   particles:{
@@ -105,4 +107,17 @@ fetch("galeria.json")
   });
 
   render();
+
+  // ✅ MOSTRAR GALERÍA COMPLETA SOLO CUANDO TOCAN "VER GALERÍA COMPLETA"
+  const btnAbrir = document.getElementById("btn-abrir-galeria");
+  const seccionGaleria = document.getElementById("galeria");
+
+  if (btnAbrir && seccionGaleria) {
+    btnAbrir.addEventListener("click", () => {
+      seccionGaleria.style.display = "block";
+      setTimeout(() => {
+        seccionGaleria.scrollIntoView({ behavior: "smooth" });
+      }, 100);
+    });
+  }
 });
