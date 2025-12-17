@@ -1,4 +1,3 @@
-// script.js
 particlesJS('particles-js', {
   particles:{
     number:{value:70},
@@ -54,8 +53,8 @@ function buildSlideHTML(a){
   `;
 }
 
-function initSwiperById(swiperId, prevClass, nextClass){
-  return new Swiper(swiperId, {
+function initSwiper(swiperSelector, prevClass, nextClass){
+  return new Swiper(swiperSelector, {
     slidesPerView: 3,
     spaceBetween: 30,
     loop: true,
@@ -92,7 +91,6 @@ fetch("./artistas.json")
     });
 
     destacados.sort((a,b) => DESTACADOS.indexOf(normName(a.nombre)) - DESTACADOS.indexOf(normName(b.nombre)));
-
     const catalogoOrdenado = [...destacados, ...resto];
 
     destacados.forEach(a => {
@@ -109,8 +107,8 @@ fetch("./artistas.json")
       contCat.appendChild(slide);
     });
 
-    initSwiperById("#destacados-swiper", "destacados-prev", "destacados-next");
-    initSwiperById("#catalogo-swiper", "catalogo-prev", "catalogo-next");
+    initSwiper("#destacados-swiper", "destacados-prev", "destacados-next");
+    initSwiper("#catalogo-swiper", "catalogo-prev", "catalogo-next");
   })
   .catch(err => console.log("Error artistas:", err));
 
@@ -121,6 +119,15 @@ fetch("./galeria.json")
   })
   .then(fotos => {
     const ultimas = document.getElementById("ultimas-galeria");
+    const modal = document.getElementById("galeria-modal");
+    const galeria = document.getElementById("galeria-extras");
+
+    const btnAbrir = document.getElementById("btn-abrir-galeria");
+    const btnCerrar = document.getElementById("btn-cerrar-galeria");
+
+    const btnMas = document.getElementById("btn-ver-mas");
+    const btnMenos = document.getElementById("btn-ver-menos");
+
     if (ultimas) {
       ultimas.innerHTML = "";
       fotos.slice(0, 9).forEach(link => {
@@ -129,10 +136,6 @@ fetch("./galeria.json")
         ultimas.appendChild(img);
       });
     }
-
-    const galeria = document.getElementById("galeria-extras");
-    const btnMas = document.getElementById("btn-ver-mas");
-    const btnMenos = document.getElementById("btn-ver-menos");
 
     let cantidad = 20;
 
@@ -150,6 +153,20 @@ fetch("./galeria.json")
       if (btnMas) btnMas.style.display = cantidad >= fotos.length ? "none" : "block";
     }
 
+    if (btnAbrir && modal) {
+      btnAbrir.addEventListener("click", () => {
+        modal.style.display = "block";
+        cantidad = 20;
+        render();
+      });
+    }
+
+    if (btnCerrar && modal) {
+      btnCerrar.addEventListener("click", () => {
+        modal.style.display = "none";
+      });
+    }
+
     if (btnMas) btnMas.addEventListener("click", () => {
       cantidad += 20;
       render();
@@ -158,27 +175,7 @@ fetch("./galeria.json")
     if (btnMenos) btnMenos.addEventListener("click", () => {
       cantidad = 20;
       render();
-      window.location.hash = "#galeria";
+      if (modal) modal.scrollTo({ top: 0, behavior: "smooth" });
     });
-
-    render();
-
-    const btnAbrir = document.getElementById("btn-abrir-galeria");
-    const seccionGaleria = document.getElementById("galeria");
-    if (btnAbrir && seccionGaleria) {
-      btnAbrir.addEventListener("click", () => {
-        seccionGaleria.style.display = "block";
-        setTimeout(() => seccionGaleria.scrollIntoView({ behavior: "smooth" }), 120);
-      });
-    }
-
-    const btnCerrar = document.getElementById("btn-cerrar-galeria");
-    const seccionPreview = document.getElementById("galeria-preview");
-    if (btnCerrar && seccionGaleria) {
-      btnCerrar.addEventListener("click", () => {
-        seccionGaleria.style.display = "none";
-        if (seccionPreview) setTimeout(() => seccionPreview.scrollIntoView({ behavior: "smooth" }), 120);
-      });
-    }
   })
   .catch(err => console.log("Error galería:", err));
