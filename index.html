@@ -1,4 +1,3 @@
-<!-- index.html -->
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -26,8 +25,8 @@
   <nav class="menu">
     <a href="#destacados">Destacados</a>
     <a href="#artistas">Artistas</a>
-    <a href="#canal">Canal</a>
-    <a href="#galeria-preview">Fotos</a>
+    <a href="#videos">Canal</a>
+    <a href="#galeria">Fotos</a>
     <a href="#sponsors">Sponsors</a>
     <a href="#testimonios">Testimonios</a>
   </nav>
@@ -53,7 +52,7 @@
   </div>
 </section>
 
-<section id="canal" class="section">
+<section id="videos" class="section">
   <h2 class="titulo-seccion">📺 El canal de las estrellas OK</h2>
 
   <div class="sponsors-box">
@@ -66,7 +65,7 @@
     </div>
 
     <iframe class="youtube"
-      src="https://www.youtube.com/embed?listType=search&list=el%20canal%20de%20las%20estrellas%20ok"
+      src="https://www.youtube.com/embed/videoseries?list=UURKCN_xpraIbiZU91kXA94w"
       frameborder="0" allowfullscreen></iframe>
   </div>
 </section>
@@ -81,7 +80,7 @@
   </div>
 </section>
 
-<section id="galeria-preview" class="section">
+<section id="galeria" class="section">
   <h2 class="titulo-seccion">📸 Últimas fotos agregadas</h2>
 
   <div id="ultimas-galeria" class="grid-galeria"></div>
@@ -91,39 +90,17 @@
   </div>
 </section>
 
-<section id="galeria" class="section" style="display:none;">
-  <h2 class="titulo-seccion">📸 Galería MMG</h2>
-
-  <div class="galeria-box">
-    <h3 class="subtitulo-galeria">Shows • Backstage • Momentos MMG</h3>
-
-    <div id="galeria-extras" class="grid-galeria"></div>
-
-    <div class="galeria-botones">
-      <button id="btn-ver-mas" class="btn-contratar btn-vermas">➕ Ver más</button>
-      <button id="btn-ver-menos" class="btn-contratar btn-vermas" style="display:none;">⬆ Ver menos</button>
-      <button id="btn-cerrar-galeria" class="btn-contratar btn-vermas">✖ Cerrar galería</button>
-    </div>
-  </div>
-</section>
-
 <section id="sponsors" class="section">
   <h2 class="titulo-seccion">🤝 Sponsors & Partners</h2>
 
   <div class="test-grid">
     <a href="https://radioimagen.onrender.com" target="_blank" class="test-box" style="text-decoration:none; color:inherit;">
-      <img src="https://www.google.com/s2/favicons?domain=radioimagen.onrender.com&sz=128"
-           alt="Radio Imagen"
-           style="width:62px; height:62px; display:block; margin:0 auto 12px;">
       <div style="font-weight:900; margin-bottom:8px;">RADIO IMAGEN</div>
       <div>Escuchá Radio Imagen!</div>
       <div>Música las 24 hs!</div>
     </a>
 
     <a href="https://tio-sergio.onrender.com" target="_blank" class="test-box" style="text-decoration:none; color:inherit;">
-      <img src="https://www.google.com/s2/favicons?domain=tio-sergio.onrender.com&sz=128"
-           alt="Tío Sergio"
-           style="width:62px; height:62px; display:block; margin:0 auto 12px;">
       <div style="font-weight:900; margin-bottom:8px;">TÍO SERGIO</div>
       <div>"El lugar de los mayores"</div>
     </a>
@@ -152,6 +129,21 @@
  class="whatsapp" target="_blank" style="bottom:120px;">
   <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
 </a>
+
+<div id="galeria-modal" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,.92); z-index:9999; overflow:auto; padding:22px;">
+  <div class="galeria-box" style="max-width:1100px; margin:0 auto;">
+    <h2 class="titulo-seccion">📸 Galería MMG</h2>
+    <h3 class="subtitulo-galeria">Shows • Backstage • Momentos MMG</h3>
+
+    <div id="galeria-extras" class="grid-galeria"></div>
+
+    <div class="galeria-botones">
+      <button id="btn-ver-mas" class="btn-contratar btn-vermas">➕ Ver más</button>
+      <button id="btn-ver-menos" class="btn-contratar btn-vermas" style="display:none;">⬆ Ver menos</button>
+      <button id="btn-cerrar-galeria" class="btn-contratar btn-vermas">✖ Cerrar galería</button>
+    </div>
+  </div>
+</div>
 
 <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
