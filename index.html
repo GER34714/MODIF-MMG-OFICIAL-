@@ -1,3 +1,4 @@
+<!-- index.html -->
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -31,7 +32,6 @@
     <a href="#sponsors">Sponsors</a>
     <a href="#testimonios">Testimonios</a>
     <a href="#ultimas-fotos">Últimas fotos</a>
-    <a href="#galeria">Fotos</a>
   </nav>
 </header>
 
@@ -86,19 +86,19 @@
   </div>
 </section>
 
-<!-- ================= ÚLTIMAS FOTOS ================= -->
+<!-- ================= ÚLTIMAS FOTOS (VISIBLE) ================= -->
 <section id="ultimas-fotos" class="section">
   <h2 class="titulo-seccion">📸 Últimas fotos agregadas</h2>
 
   <div id="ultimas-galeria" class="grid-galeria"></div>
 
   <div class="galeria-botones">
-    <a href="#galeria" class="btn-contratar btn-vermas">📂 Ver galería completa</a>
+    <button id="btn-abrir-galeria" class="btn-contratar btn-vermas">📂 Ver galería completa</button>
   </div>
 </section>
 
-<!-- ================= GALERÍA ================= -->
-<section id="galeria" class="section">
+<!-- ================= GALERÍA COMPLETA (OCULTA HASTA CLICK) ================= -->
+<section id="galeria" class="section" style="display:none;">
   <h2 class="titulo-seccion">📸 Galería MMG</h2>
 
   <div class="galeria-box">
