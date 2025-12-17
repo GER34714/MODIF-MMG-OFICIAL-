@@ -63,6 +63,17 @@ fetch("galeria.json")
 .then(r => r.json())
 .then(fotos => {
 
+  // ✅ ÚLTIMAS FOTOS AGREGADAS (toma las primeras 6 del JSON)
+  const ultimas = document.getElementById("ultimas-galeria");
+  if (ultimas) {
+    ultimas.innerHTML = "";
+    fotos.slice(0, 6).forEach(link => {
+      const img = document.createElement("img");
+      img.src = link;
+      ultimas.appendChild(img);
+    });
+  }
+
   const galeria = document.getElementById("galeria-extras");
   const btnMas = document.getElementById("btn-ver-mas");
   const btnMenos = document.getElementById("btn-ver-menos");
